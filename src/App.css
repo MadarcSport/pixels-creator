@@ -223,6 +223,206 @@ main {
   color: #fff;
 }
 
+.featured-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  min-height: 500px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+}
+
+.featured-project-visual {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  background: #090a12;
+}
+
+.featured-project-visual::after {
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 6, 14, 0.36),
+    transparent 24%,
+    transparent 72%,
+    rgba(5, 6, 14, 0.48)
+  );
+  content: "";
+  inset: 0;
+  pointer-events: none;
+}
+
+.featured-project-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.carousel-arrow {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  padding: 0;
+  transform: translateY(-50%);
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(8, 9, 18, 0.66);
+  backdrop-filter: blur(12px);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.carousel-arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+  border-color: rgba(255, 255, 255, 0.72);
+  background: rgba(84, 74, 145, 0.85);
+}
+
+.carousel-arrow:focus-visible {
+  outline: 3px solid #ffb199;
+  outline-offset: 3px;
+}
+
+.carousel-arrow-previous {
+  left: 1rem;
+}
+
+.carousel-arrow-next {
+  right: 1rem;
+}
+
+.visual-label,
+.visual-index {
+  position: absolute;
+  z-index: 2;
+  color: rgba(231, 234, 255, 0.76);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.visual-label {
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.visual-index {
+  right: 1.5rem;
+  bottom: 1.5rem;
+}
+
+.featured-project-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.featured-project-copy h2 {
+  margin: 0.75rem 0 1rem;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+
+.project-summary,
+.project-details > p {
+  color: rgba(248, 244, 238, 0.7);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+}
+
+.project-tags span {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  color: rgba(248, 244, 238, 0.76);
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 0.76rem;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: 1.75rem;
+}
+
+.project-actions .button {
+  gap: 0.55rem;
+}
+
+.github-button {
+  width: 3rem;
+  min-width: 3rem;
+  padding: 0;
+}
+
+.github-button svg {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.project-story-link {
+  color: rgba(248, 244, 238, 0.8);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration-color: rgba(248, 244, 238, 0.35);
+  text-underline-offset: 0.25rem;
+}
+
+.project-note {
+  margin-top: 1.25rem;
+  color: rgba(248, 244, 238, 0.48);
+  font-size: 0.78rem;
+}
+
+.project-details {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 1rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.7rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.project-details h2 {
+  max-width: 10ch;
+  margin-top: 0.7rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
 .intro-grid,
 .work-grid,
 .journal-list,
@@ -427,6 +627,8 @@ main {
 
 @media (max-width: 980px) {
   .hero-section,
+  .featured-project,
+  .project-details,
   .section-heading,
   .journal-section,
   .about-section {
@@ -466,6 +668,14 @@ main {
   .hero-copy,
   .hero-stage {
     border-radius: 1.35rem;
+  }
+
+  .featured-project {
+    border-radius: 1.35rem;
+  }
+
+  .featured-project-visual {
+    min-height: 340px;
   }
 
   .hero-stage {
