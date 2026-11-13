@@ -51,48 +51,45 @@ const siteRoadmap = [
 const featuredProjects = [
   {
     title: "Quantum Pulse",
-    category: "Featured project · Interactive experience",
+    // category: "Featured project · Interactive experience",
     summary:
       "A browser-based experience bringing an interactive 3D canvas together with supporting web pages. Explore the live project, then return here for a concise overview.",
     tags: ["Interactive 3D", "Web experience", "Live demo"],
     url: "https://quantum-pulse-tau.vercel.app/",
+    thumbnailUrl:
+      "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=640&q=80",
     previewType: "video",
     previewUrl:
       // "https://drive.google.com/file/d/1Kby5JCbTTE1J0am1NqEoDneBea8TGEsm/preview",
       "https://res.cloudinary.com/db7i9febj/video/upload/v1794300774/quantumPukse_zfvkqc.webm",
     previewTitle: "Quantum Pulse project preview video",
     githubUrl: "https://github.com/MadarcSport/quantum-pulse",
-    detailsTitle: "More than a 3D scene.",
-    details:
-      "Quantum Pulse pairs a hands-on 3D canvas with a set of web pages, giving visitors both an immersive moment and a place to explore the rest of the experience. Use this space to add your process, role, and the design or technical decisions behind the finished project.",
   },
   {
     title: "Street Wall",
-    category: "Featured project · Web experience",
+    // category: "Featured project · Web experience",
     summary:
       "Explore Street Wall, another live web project. Open the full experience to see it in its intended layout and interact with the complete site.",
     tags: ["Web experience", "Interactive", "Live demo"],
     url: "https://street-wall-1.vercel.app/",
+    thumbnailUrl:
+      "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=640&q=80",
     previewType: "iframe",
     previewUrl: "https://street-wall-1.vercel.app/",
     previewTitle: "Street Wall live project preview",
-    detailsTitle: "Explore Street Wall.",
-    details:
-      "Street Wall is presented here as a second featured web project. Visit the live site to explore the complete experience. Add a short case-study description here with your role, process, and the key details you want visitors to know.",
   },
   {
     title: "Broken Computer",
-    category: "Featured project · Material study",
+    // category: "Featured project · Material study",
     summary:
       "An interactive material showcase exploring surface detail through albedo, normal, and roughness maps, alongside a collection of shader-driven visual effects.",
     tags: ["Material maps", "Shader art", "Interactive 3D"],
     url: "https://broken-computer.vercel.app/",
+    thumbnailUrl:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=640&q=80",
     previewType: "iframe",
     previewUrl: "https://broken-computer.vercel.app/",
     previewTitle: "Broken Computer material and shader showcase",
-    detailsTitle: "Surface detail meets shader play.",
-    details:
-      "Broken Computer presents a display surface using maps such as albedo, normal, and roughness to shape its appearance, with shader art effects adding another layer of visual experimentation. Open the live project to explore the materials and effects firsthand.",
   },
 ];
 
@@ -126,6 +123,13 @@ function App() {
           <a href="#about">About</a>
         </div>
       </nav>
+
+      <div className="top-banner">
+        <img
+          src="https://res.cloudinary.com/db7i9febj/image/upload/v1794571600/pixels_creator_lab_2_eb4d1p.png"
+          alt="Pixels Creator Lab banner"
+        />
+      </div>
 
       <main id="top">
         <section className="hero-section" aria-labelledby="hero-title">
@@ -166,10 +170,16 @@ function App() {
           </div>
         </section>
 
+        <div className="section-heading featured-labs-heading">
+          <div>
+            <span className="eyebrow">Interactive experiments</span>
+            <h2 id="featured-labs-title">Three.js Labs</h2>
+          </div>
+        </div>
         <section
           className="featured-project section-block"
           id="featured-project"
-          aria-labelledby="featured-project-title"
+          aria-labelledby="featured-labs-title"
           aria-roledescription="carousel"
         >
           <div className="featured-project-visual">
@@ -221,10 +231,10 @@ function App() {
             </button>
           </div>
           <div className="featured-project-copy">
-            <span className="eyebrow">{activeProject.category}</span>
-            <h2 id="featured-project-title" aria-live="polite">
+            <span className="eyebrow">Featured project</span>
+            <h3 id="featured-project-title" aria-live="polite">
               {activeProject.title}
-            </h2>
+            </h3>
             <p className="project-summary">{activeProject.summary}</p>
             <div className="project-tags" aria-label="Project features">
               {activeProject.tags.map((tag) => (
@@ -257,9 +267,6 @@ function App() {
                   </svg>
                 </a>
               )}
-              <a className="project-story-link" href="#project-details">
-                About this project <span aria-hidden="true">↓</span>
-              </a>
             </div>
             <p className="project-note">
               Use the arrows to browse featured projects. Open the live project
@@ -268,17 +275,21 @@ function App() {
           </div>
         </section>
 
-        <section
-          className="project-details"
-          id="project-details"
-          aria-label={`${activeProject.title} project overview`}
-        >
-          <div>
-            <span className="eyebrow">Project overview</span>
-            <h2>{activeProject.detailsTitle}</h2>
-          </div>
-          <p>{activeProject.details}</p>
-        </section>
+        <div className="project-thumbnails" aria-label="Choose a project">
+          {featuredProjects.map((project, index) => (
+            <button
+              className={`project-thumbnail${index === activeProjectIndex ? " is-active" : ""}`}
+              key={project.title}
+              type="button"
+              onClick={() => setActiveProjectIndex(index)}
+              aria-label={`Show ${project.title}`}
+              aria-current={index === activeProjectIndex ? "true" : undefined}
+            >
+              <img src={project.thumbnailUrl} alt="" />
+              <span>{project.title}</span>
+            </button>
+          ))}
+        </div>
 
         {/* <section className="intro-grid" aria-label="Portfolio content pillars">
           <article>
