@@ -93,15 +93,64 @@ const featuredProjects = [
   },
 ];
 
+const ecommerceProducts = [
+  {
+    asin: "B09Q69PL8C",
+    title: "Featured product",
+    imageUrl:
+      "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/718i8jzVeNL._AC_SL1500_.jpg",
+    url: "https://www.amazon.com/dp/B09Q69PL8C?ref=myi_title_dp",
+  },
+  {
+    asin: "B0CDVDPFF6",
+    title: "Football-themed product",
+    imageUrl:
+      "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/71mWRpiZ1VL._AC_SL1500_.jpg",
+    url: "https://www.amazon.com/MADARC-SPORT-Football-Drinking-relief/dp/B0CDVDPFF6/ref=ast_sto_dp_puis",
+  },
+  {
+    asin: "B0CHM79MSM",
+    title: "Baseball-themed product",
+    imageUrl:
+      "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/71fkwPBiZ6L._AC_SL1500_.jpg",
+    url: "https://www.amazon.com/MADARC-SPORT-Baseball-Drinking-relief/dp/B0CHM79MSM/ref=ast_sto_dp_puis",
+  },
+  {
+    asin: "B0G6B4CN36",
+    title: "Motorcycle handlebar toilet paper holder",
+    imageUrl:
+      "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/71+JBJDOpUL._AC_SL1500_.jpg",
+    url: "https://www.amazon.com/Standing-Toilet-Holder-Motorcycle-Handlebars/dp/B0G6B4CN36/ref=ast_sto_dp_puis",
+  },
+  {
+    asin: "B0B762CJJW",
+    title: "Baseball design disposable product",
+    imageUrl:
+      "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/818Egg1KnpL._AC_SL1500_.jpg",
+    url: "https://www.amazon.com/50-Baseball-Design-Disposable-Definition/dp/B0B762CJJW/",
+  },
+];
+
 function App() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [activeProductIndex, setActiveProductIndex] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const activeProject = featuredProjects[activeProjectIndex];
+  const activeProduct = ecommerceProducts[activeProductIndex];
 
   const showProject = (direction: -1 | 1) => {
     setActiveProjectIndex(
       (currentIndex) =>
         (currentIndex + direction + featuredProjects.length) %
         featuredProjects.length,
+    );
+  };
+
+  const showProduct = (direction: -1 | 1) => {
+    setActiveProductIndex(
+      (currentIndex) =>
+        (currentIndex + direction + ecommerceProducts.length) %
+        ecommerceProducts.length,
     );
   };
 
@@ -116,17 +165,46 @@ function App() {
           />
           Pixels-Creator
         </a>
-        <div className="nav-links">
-          <a href="#featured-project">Featured</a>
-          <a href="#work">Work</a>
-          <a href="#journal">Journal</a>
-          <a href="#about">About</a>
+        <button
+          className={`menu-toggle${isMobileMenuOpen ? " is-open" : ""}`}
+          type="button"
+          aria-label={
+            isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="main-navigation-links"
+          onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <div
+          className={`nav-links${isMobileMenuOpen ? " is-open" : ""}`}
+          id="main-navigation-links"
+        >
+          <a
+            href="#featured-project"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Featured
+          </a>
+          <a href="#work" onClick={() => setIsMobileMenuOpen(false)}>
+            Work
+          </a>
+          <a href="#journal" onClick={() => setIsMobileMenuOpen(false)}>
+            Journal
+          </a>
+          <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>
+            About
+          </a>
         </div>
       </nav>
 
       <div className="top-banner">
         <img
-          src="https://res.cloudinary.com/db7i9febj/image/upload/v1794571600/pixels_creator_lab_2_eb4d1p.png"
+          // src="https://res.cloudinary.com/db7i9febj/image/upload/v1794571600/pixels_creator_lab_2_eb4d1p.png"
+          src="https://res.cloudinary.com/db7i9febj/image/upload/v1794604753/pixels_creator_lab_3_quajng.png"
           alt="Pixels Creator Lab banner"
         />
       </div>
@@ -166,6 +244,85 @@ function App() {
               <span>
                 Later: load your best scene, shader, or product object here.
               </span>
+            </div>
+          </div>
+        </section>
+
+        <div className="section-heading featured-labs-heading ecommerce-heading">
+          <div>
+            <span className="eyebrow">Product development</span>
+            <h2 id="ecommerce-title">Ecommerce</h2>
+          </div>
+        </div>
+        <section
+          className="featured-project section-block ecommerce-project"
+          aria-labelledby="ecommerce-title"
+          aria-roledescription="carousel"
+        >
+          <div className="featured-project-visual ecommerce-visual">
+            <div className="ecommerce-image-fallback" aria-hidden="true">
+              <span>
+                PRODUCT {String(activeProductIndex + 1).padStart(2, "0")}
+              </span>
+              <strong>{activeProduct.asin}</strong>
+            </div>
+            <img
+              className="featured-project-video ecommerce-product-image"
+              key={activeProduct.asin}
+              src={
+                activeProduct.imageUrl ??
+                `https://images-na.ssl-images-amazon.com/images/P/${activeProduct.asin}.01._SCLZZZZZZZ_.jpg`
+              }
+              alt={activeProduct.title}
+              onError={(event) => {
+                event.currentTarget.style.display = "none";
+              }}
+            />
+            <span className="visual-label">PRODUCT DEVELOPMENT</span>
+            <span className="visual-index">
+              {String(activeProductIndex + 1).padStart(2, "0")} — PRODUCT
+            </span>
+            <button
+              className="carousel-arrow carousel-arrow-previous"
+              type="button"
+              onClick={() => showProduct(-1)}
+              aria-label="Show previous ecommerce product"
+            >
+              <span aria-hidden="true">←</span>
+            </button>
+            <button
+              className="carousel-arrow carousel-arrow-next"
+              type="button"
+              onClick={() => showProduct(1)}
+              aria-label="Show next ecommerce product"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <div className="featured-project-copy">
+            <span className="eyebrow">Ecommerce · end-to-end product work</span>
+            <h3>Product developer</h3>
+            <p className="project-summary">
+              Designed products, developed and patented the ideas, found
+              factories to manufacture them, and brought them to market—with
+              Amazon FBA and A+ Content creation.
+            </p>
+            <div className="project-tags" aria-label="Product development work">
+              <span>Product design</span>
+              <span>Patents</span>
+              <span>Factory sourcing</span>
+              <span>Marketing</span>
+              <span>Amazon FBA · A+ Content</span>
+            </div>
+            <div className="project-actions">
+              <a
+                className="button primary"
+                href={activeProduct.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View product on Amazon <span aria-hidden="true">↗</span>
+              </a>
             </div>
           </div>
         </section>

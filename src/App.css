@@ -86,6 +86,10 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+.menu-toggle {
+  display: none;
+}
+
 .top-banner {
   width: 100%;
   height: 500px;
@@ -141,7 +145,7 @@ main {
 }
 
 .eyebrow {
-  color: #ffb199;
+  color: #fdac02;
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -190,9 +194,14 @@ main {
   font-weight: 800;
 }
 
-.button.primary {
+/* .button.primary {
   color: #1d1110;
   background: linear-gradient(135deg, #ff8b63, #ffd79c);
+} */
+
+.button.primary {
+  color: #1d1110;
+  background: linear-gradient(135deg, #f74701, #ffd79c);
 }
 
 .button.secondary {
@@ -277,6 +286,63 @@ main {
   object-fit: cover;
 }
 
+.ecommerce-visual {
+  background: #fff;
+}
+
+.ecommerce-visual::after {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.035),
+    transparent 18%,
+    transparent 82%,
+    rgba(0, 0, 0, 0.035)
+  );
+}
+
+.ecommerce-visual .visual-label,
+.ecommerce-visual .visual-index {
+  color: rgba(25, 25, 30, 0.66);
+}
+
+.ecommerce-image-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: rgba(25, 25, 30, 0.58);
+  text-align: center;
+}
+
+.ecommerce-image-fallback span {
+  color: #fdac02;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.ecommerce-image-fallback strong {
+  font-size: clamp(1.1rem, 3vw, 2rem);
+  letter-spacing: 0.08em;
+}
+
+.ecommerce-product-image {
+  z-index: 1;
+  padding: 3.5rem;
+  object-fit: contain;
+}
+
+.ecommerce-heading {
+  margin-top: 6rem;
+}
+
+.ecommerce-heading + .ecommerce-project {
+  margin-top: 0;
+}
+
 .carousel-arrow {
   position: absolute;
   z-index: 3;
@@ -350,7 +416,7 @@ main {
 .featured-project-copy h2,
 .featured-project-copy h3 {
   margin: 0.75rem 0 1rem;
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 0.92;
   letter-spacing: -0.07em;
 }
@@ -697,25 +763,87 @@ main {
 }
 
 @media (max-width: 640px) {
-  .site-nav,
   .stage-caption {
     align-items: flex-start;
     flex-direction: column;
   }
 
   .site-nav {
-    gap: 0.6rem;
+    align-items: center;
+    gap: 1rem;
     padding: 0.55rem 0;
   }
 
   .brand-logo {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
   }
 
   .nav-links {
-    width: 100%;
-    justify-content: space-between;
+    position: absolute;
+    top: calc(100% - 0.2rem);
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: min(18rem, 100%);
+    padding: 0.55rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1rem;
+    background: rgba(18, 16, 23, 0.97);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 0.8rem 0.9rem;
+    border-radius: 0.65rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.07);
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 1.1rem;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .menu-toggle.is-open span:first-child {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.is-open span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .menu-toggle:focus-visible {
+    outline: 3px solid #ffb199;
+    outline-offset: 3px;
   }
 
   .top-banner {
