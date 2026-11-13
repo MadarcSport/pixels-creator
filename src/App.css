@@ -703,13 +703,32 @@ main {
     flex-direction: column;
   }
 
+  .site-nav {
+    gap: 0.6rem;
+    padding: 0.55rem 0;
+  }
+
+  .brand-logo {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
   .nav-links {
     width: 100%;
     justify-content: space-between;
   }
 
+  .top-banner {
+    height: auto;
+  }
+
+  .top-banner img {
+    height: auto;
+    object-fit: contain;
+  }
+
   main {
-    padding-top: 2rem;
+    padding-top: 1.25rem;
   }
 
   .hero-section {
@@ -730,14 +749,20 @@ main {
   }
 
   .project-thumbnails {
-    justify-content: center;
-    gap: 0.4rem;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    width: 100%;
   }
 
   .project-thumbnail {
-    flex-basis: 145px;
-    flex-shrink: 0;
+    width: 100%;
+    padding: 0.25rem;
+  }
+
+  .project-thumbnail span {
+    padding: 0 0.1rem 0.1rem;
+    font-size: 0.68rem;
   }
 
   .hero-stage {
