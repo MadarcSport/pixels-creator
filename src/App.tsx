@@ -56,8 +56,10 @@ const featuredProjects = [
       "A browser-based experience bringing an interactive 3D canvas together with supporting web pages. Explore the live project, then return here for a concise overview.",
     tags: ["Interactive 3D", "Web experience", "Live demo"],
     url: "https://quantum-pulse-tau.vercel.app/",
+    previewType: "video",
     previewUrl:
-      "https://drive.google.com/file/d/1Kby5JCbTTE1J0am1NqEoDneBea8TGEsm/preview",
+      // "https://drive.google.com/file/d/1Kby5JCbTTE1J0am1NqEoDneBea8TGEsm/preview",
+      "https://res.cloudinary.com/db7i9febj/video/upload/v1794300774/quantumPukse_zfvkqc.webm",
     previewTitle: "Quantum Pulse project preview video",
     githubUrl: "https://github.com/MadarcSport/quantum-pulse",
     detailsTitle: "More than a 3D scene.",
@@ -71,11 +73,26 @@ const featuredProjects = [
       "Explore Street Wall, another live web project. Open the full experience to see it in its intended layout and interact with the complete site.",
     tags: ["Web experience", "Interactive", "Live demo"],
     url: "https://street-wall-1.vercel.app/",
+    previewType: "iframe",
     previewUrl: "https://street-wall-1.vercel.app/",
     previewTitle: "Street Wall live project preview",
     detailsTitle: "Explore Street Wall.",
     details:
       "Street Wall is presented here as a second featured web project. Visit the live site to explore the complete experience. Add a short case-study description here with your role, process, and the key details you want visitors to know.",
+  },
+  {
+    title: "Broken Computer",
+    category: "Featured project · Material study",
+    summary:
+      "An interactive material showcase exploring surface detail through albedo, normal, and roughness maps, alongside a collection of shader-driven visual effects.",
+    tags: ["Material maps", "Shader art", "Interactive 3D"],
+    url: "https://broken-computer.vercel.app/",
+    previewType: "iframe",
+    previewUrl: "https://broken-computer.vercel.app/",
+    previewTitle: "Broken Computer material and shader showcase",
+    detailsTitle: "Surface detail meets shader play.",
+    details:
+      "Broken Computer presents a display surface using maps such as albedo, normal, and roughness to shape its appearance, with shader art effects adding another layer of visual experimentation. Open the live project to explore the materials and effects firsthand.",
   },
 ];
 
@@ -95,7 +112,12 @@ function App() {
     <div className="app">
       <nav className="site-nav" aria-label="Main navigation">
         <a className="brand" href="#top" aria-label="Portfolio home">
-          Artfolio
+          <img
+            className="brand-logo"
+            src="https://res.cloudinary.com/db7i9febj/image/upload/v1794301527/TR_Glossy_Blue_Paintbrush_with_Flying_Pixels_1_faqgsh.png"
+            alt=""
+          />
+          Pixels-Creator
         </a>
         <div className="nav-links">
           <a href="#featured-project">Featured</a>
@@ -151,14 +173,28 @@ function App() {
           aria-roledescription="carousel"
         >
           <div className="featured-project-visual">
-            <iframe
-              className="featured-project-video"
-              key={activeProject.title}
-              src={activeProject.previewUrl}
-              title={activeProject.previewTitle}
-              allow="autoplay; fullscreen; clipboard-write"
-              allowFullScreen
-            />
+            {activeProject.previewType === "video" ? (
+              <video
+                className="featured-project-video"
+                key={activeProject.title}
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label={activeProject.previewTitle}
+              >
+                <source src={activeProject.previewUrl} type="video/webm" />
+              </video>
+            ) : (
+              <iframe
+                className="featured-project-video"
+                key={activeProject.title}
+                src={activeProject.previewUrl}
+                title={activeProject.previewTitle}
+                allow="autoplay; fullscreen; clipboard-write"
+                allowFullScreen
+              />
+            )}
             <span className="visual-label">
               {activeProject.title === "Quantum Pulse"
                 ? "INTERACTIVE / 3D"

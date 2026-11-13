@@ -55,13 +55,11 @@
   text-transform: uppercase;
 }
 
-.brand::before {
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #ff7a55, #ffe0a3);
-  box-shadow: 0 0 24px rgba(255, 122, 85, 0.8);
-  content: "";
+.brand-logo {
+  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
 }
 
 .nav-links {
