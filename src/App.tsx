@@ -74,9 +74,10 @@ const featuredProjects = [
     url: "https://street-wall-1.vercel.app/",
     thumbnailUrl:
       "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=640&q=80",
-    previewType: "iframe",
-    previewUrl: "https://street-wall-1.vercel.app/",
-    previewTitle: "Street Wall live project preview",
+    previewType: "video",
+    previewUrl:
+      "https://res.cloudinary.com/db7i9febj/video/upload/v1794948903/wallDownn11_o0tluq.webm",
+    previewTitle: "Street Wall project preview video",
   },
   {
     title: "Broken Computer",
@@ -87,9 +88,10 @@ const featuredProjects = [
     url: "https://broken-computer.vercel.app/",
     thumbnailUrl:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=640&q=80",
-    previewType: "iframe",
-    previewUrl: "https://broken-computer.vercel.app/",
-    previewTitle: "Broken Computer material and shader showcase",
+    previewType: "video",
+    previewUrl:
+      "https://res.cloudinary.com/db7i9febj/video/upload/v1794905595/cubeDemo01_1_1_x1od7w.webm",
+    previewTitle: "Broken Computer cube preview video",
   },
 ];
 
@@ -207,6 +209,12 @@ function App() {
           src="https://res.cloudinary.com/db7i9febj/image/upload/v1794604753/pixels_creator_lab_3_quajng.png"
           alt="Pixels Creator Lab banner"
         />
+        <div
+          className="banner-scene"
+          aria-label="Interactive 3D material preview"
+        >
+          <Scene3D_2 />
+        </div>
       </div>
 
       <main id="top">
