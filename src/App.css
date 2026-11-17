@@ -91,6 +91,11 @@
 }
 
 .top-banner {
+  /* Desktop banner-scene controls: adjust size, horizontal center, and overlap. */
+  --banner-scene-size: 520px;
+  --banner-scene-x: 50%;
+  --banner-scene-bottom: -210px;
+
   position: relative;
   z-index: 2;
   width: 100%;
@@ -109,10 +114,10 @@
 .banner-scene {
   position: absolute;
   z-index: 1;
-  bottom: -110px;
-  left: 50%;
-  width: min(320px, 42vw);
-  height: min(320px, 42vw);
+  bottom: var(--banner-scene-bottom);
+  left: var(--banner-scene-x);
+  width: var(--banner-scene-size);
+  height: var(--banner-scene-size);
   transform: translateX(-50%);
 }
 
@@ -859,6 +864,11 @@ main {
   }
 
   .top-banner {
+    /* Mobile controls: independently tune the scene for narrow screens. */
+    --banner-scene-size: 240px;
+    --banner-scene-x: 50%;
+    --banner-scene-bottom: -110px;
+
     height: auto;
   }
 
@@ -868,9 +878,8 @@ main {
   }
 
   .banner-scene {
-    bottom: -70px;
-    width: min(240px, 70vw);
-    height: min(240px, 70vw);
+    max-width: 90vw;
+    max-height: 90vw;
   }
 
   main {
