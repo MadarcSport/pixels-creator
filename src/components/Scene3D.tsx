@@ -11,15 +11,16 @@ function RotatingCube({ position = [0, 0, 0] }: RotatingCubeProps) {
 
   useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += 0.01;
-      meshRef.current.rotation.y += 0.01;
+      meshRef.current.rotation.x += 0.001;
+      meshRef.current.rotation.y += 0.001;
     }
   });
 
   return (
     <mesh ref={meshRef} position={position} scale={1.5}>
-      <boxGeometry args={[1, 1, 1, 2, 2, 2]} />
-      <meshPhongMaterial color="#d32e2e" wireframe={true} />
+      {/* <boxGeometry args={[1, 1, 1, 2, 2, 2]} /> */}
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshPhongMaterial color="#d32e2e" wireframe={false} />
     </mesh>
   );
 }

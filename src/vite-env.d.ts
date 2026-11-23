@@ -10,6 +10,8 @@ declare module "react" {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       boxGeometry: any;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      sphereGeometry: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       meshPhongMaterial: any;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       meshStandardMaterial: any;
