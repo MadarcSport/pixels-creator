@@ -699,6 +699,12 @@ main {
   letter-spacing: 0.04em;
 }
 
+.identity-heading h2 {
+  margin: 1.5rem auto 0;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
 .video-banner {
   position: relative;
   width: min(1180px, calc(100% - 2rem));
@@ -982,11 +988,35 @@ main {
   }
 
   .identity-heading {
+    width: min(100% - 3rem, 32rem);
     margin-top: 130px;
   }
 
   .identity-heading h1 {
     font-size: clamp(2.75rem, 13vw, 4rem);
+  }
+
+  .identity-heading p {
+    margin: 0;
+    font-size: clamp(1.625rem, 6.5vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .identity-heading h2 {
+    max-width: 32ch;
+    margin-top: 1rem;
+    color: rgba(248, 244, 238, 0.78);
+    font-size: clamp(1rem, 3.8vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+
+  .identity-heading h2 br {
+    display: none;
   }
 
   .stage-caption {
@@ -1093,6 +1123,14 @@ main {
 
   main {
     padding-top: 3.5rem;
+  }
+
+  main#top {
+    padding-top: 2rem;
+  }
+
+  main#top > .featured-labs-heading:first-child {
+    margin-top: 0;
   }
 
   .hero-section {

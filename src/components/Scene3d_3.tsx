@@ -27,6 +27,12 @@ const materialOptions: {
     description:
       "Cool iron with layered grain, scratches, and varied roughness.",
   },
+  {
+    id: "ironBlack",
+    label: "Black Iron",
+    description:
+      "Dark iron with fine metallic grain, pronounced scratches, and subtle reflections.",
+  },
 ];
 
 export function Scene3d_3() {
@@ -42,7 +48,7 @@ export function Scene3d_3() {
     >
       <div className="section-heading">
         <span className="eyebrow">Shader & surface studies</span>
-        <h2 id="material-showcase-title">One sphere. Three surfaces.</h2>
+        <h2 id="material-showcase-title">One sphere. Four surfaces.</h2>
         <p>
           Exploring procedural grain, metallic reflections, and the details that
           bring a surface to life.

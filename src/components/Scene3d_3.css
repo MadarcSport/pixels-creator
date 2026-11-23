@@ -71,6 +71,10 @@
   background: linear-gradient(135deg, #f0eeee, #969899 55%, #45484b);
 }
 
+.material-showcase-swatch--ironBlack {
+  background: linear-gradient(135deg, #999b9e, #525252 55%, #17191c);
+}
+
 .material-showcase-description {
   max-width: 35rem;
   min-height: 3em;

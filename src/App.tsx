@@ -139,10 +139,8 @@ function App() {
         {/* <h1>Marc TOUBIA</h1> */}
         <p>Where ideas take shape</p>
         <h2>
-          <br />
-          UX/UI design, React development,
-          <br /> interactive 3D to create websites,
-          <br /> & ecommerce visuals.
+          UX/UI design, React development, <br />
+          interactive 3D to create websites, <br />& ecommerce visuals.
         </h2>
       </header>
 
