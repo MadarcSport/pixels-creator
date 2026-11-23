@@ -1,35 +1,42 @@
 import "./App.css";
-import { useEffect, useRef, useState } from "react";
-import { Scene3D_2 } from "./components/Scene3D_2";
+import { lazy, useEffect, useRef, useState } from "react";
+import { DeferredScene } from "./components/DeferredScene";
 import { EcommerceSection } from "./components/EcommerceSection";
 import { ThreeJsSection } from "./components/ThreeJsSection";
+import { Scene3d_3 } from "./components/Scene3d_3";
 
-const featuredWorks = [
-  {
-    title: "3D Art Studies",
-    category: "Gallery",
-    description:
-      "Characters, props, still-life renders, experiments, and finished 3D artworks.",
-  },
-  {
-    title: "Three.js Labs",
-    category: "Interactive",
-    description:
-      "WebGL scenes, realtime interactions, camera motion, particles, and browser demos.",
-  },
-  {
-    title: "Shader Materials",
-    category: "Research",
-    description:
-      "Procedural surfaces, matcaps, gradients, displacement tests, and lighting studies.",
-  },
-  {
-    title: "Ecommerce Design",
-    category: "Product",
-    description:
-      "Item cards, campaign visuals, product configurators, and checkout presentation ideas.",
-  },
-];
+const Scene3D_2 = lazy(() =>
+  import("./components/Scene3D_2").then((module) => ({
+    default: module.Scene3D_2,
+  })),
+);
+
+// const featuredWorks = [
+//   {
+//     title: "3D Art Studies",
+//     category: "Gallery",
+//     description:
+//       "Characters, props, still-life renders, experiments, and finished 3D artworks.",
+//   },
+//   {
+//     title: "Three.js Labs",
+//     category: "Interactive",
+//     description:
+//       "WebGL scenes, realtime interactions, camera motion, particles, and browser demos.",
+//   },
+//   {
+//     title: "Shader Materials",
+//     category: "Research",
+//     description:
+//       "Procedural surfaces, matcaps, gradients, displacement tests, and lighting studies.",
+//   },
+//   {
+//     title: "Ecommerce Design",
+//     category: "Product",
+//     description:
+//       "Item cards, campaign visuals, product configurators, and checkout presentation ideas.",
+//   },
+// ];
 
 const journalItems = [
   "Daily life photos",
@@ -122,13 +129,21 @@ function App() {
           className="banner-scene"
           aria-label="Interactive 3D material preview"
         >
-          <Scene3D_2 />
+          <DeferredScene>
+            <Scene3D_2 />
+          </DeferredScene>
         </div>
       </div>
 
       <header className="identity-heading">
-        <h1>Marc TOUBIA</h1>
+        {/* <h1>Marc TOUBIA</h1> */}
         <p>Where ideas take shape</p>
+        <h2>
+          <br />
+          UX/UI design, React development,
+          <br /> interactive 3D to create websites,
+          <br /> & ecommerce visuals.
+        </h2>
       </header>
 
       <div className="video-banner">
@@ -191,7 +206,7 @@ function App() {
       <main id="top">
         {/* start of Featured top section */}
 
-        <section className="hero-section" aria-labelledby="hero-title">
+        {/* <section className="hero-section" aria-labelledby="hero-title">
           <div className="hero-copy">
             <span className="eyebrow">
               3D artist · creative developer · visual storyteller
@@ -227,13 +242,15 @@ function App() {
               </span>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* end of Featured top section */}
 
         <EcommerceSection preview />
 
         <ThreeJsSection preview />
+
+        <Scene3d_3 />
 
         {/* <section className="intro-grid" aria-label="Portfolio content pillars">
           <article>
@@ -262,7 +279,7 @@ function App() {
           </article>
         </section> */}
 
-        <section
+        {/* <section
           className="section-block"
           id="work"
           aria-labelledby="work-title"
@@ -291,7 +308,7 @@ function App() {
               </article>
             ))}
           </div>
-        </section>
+        </section> */}
 
         <section
           className="journal-section"

@@ -1,0 +1,91 @@
+.material-showcase {
+  margin: 5rem 0;
+  text-align: center;
+}
+
+.material-showcase .section-heading p {
+  max-width: 38rem;
+  margin: 1rem auto 0;
+}
+
+.material-showcase-canvas {
+  width: 100%;
+  height: clamp(300px, 48vw, 480px);
+  cursor: grab;
+}
+
+.material-showcase-canvas:active {
+  cursor: grabbing;
+}
+
+.material-showcase-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.material-showcase-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 48px;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f8f4ee;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.material-showcase-button:hover,
+.material-showcase-button[aria-pressed="true"] {
+  border-color: #fdac02;
+  background: rgba(253, 172, 2, 0.1);
+}
+
+.material-showcase-button:focus-visible {
+  outline: 2px solid #fdac02;
+  outline-offset: 4px;
+}
+
+.material-showcase-swatch {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+}
+
+.material-showcase-swatch--copper {
+  background: linear-gradient(135deg, #f8c393, #a9522e 55%, #542817);
+}
+
+.material-showcase-swatch--gold {
+  background: linear-gradient(135deg, #fff0ae, #d4af37 55%, #765012);
+}
+
+.material-showcase-swatch--iron {
+  background: linear-gradient(135deg, #f0eeee, #969899 55%, #45484b);
+}
+
+.material-showcase-description {
+  max-width: 35rem;
+  min-height: 3em;
+  margin: 1.25rem auto 0;
+  color: rgba(248, 244, 238, 0.8);
+}
+
+.material-showcase-hint {
+  margin-top: 0.4rem;
+  color: rgba(248, 244, 238, 0.5);
+  font-size: 0.8rem;
+}
+
+.material-showcase-status {
+  color: #f8f4ee;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}

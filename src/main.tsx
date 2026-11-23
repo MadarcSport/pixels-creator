@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
 import App from "./App.tsx";
 import { EcommercePage } from "./components/EcommercePage.tsx";
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/ecommerce" element={<EcommercePage />} />
         <Route path="/threejs" element={<ThreeJsPage />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   </StrictMode>,
 );

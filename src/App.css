@@ -971,6 +971,16 @@ main {
 }
 
 @media (max-width: 640px) {
+  .video-banner {
+    overflow: hidden;
+  }
+
+  .video-banner > img {
+    width: 150%;
+    max-width: none;
+    margin-left: -25%;
+  }
+
   .identity-heading {
     margin-top: 130px;
   }
