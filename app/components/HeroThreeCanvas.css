@@ -10,3 +10,18 @@
     transparent 0%
   );
 }
+
+.hero-three-canvas-control {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .hero-three-canvas-control {
+    top: 16px;
+    transform: none;
+  }
+}

@@ -365,15 +365,7 @@ export default function BoardControlModel(props: GroupProps) {
   return (
     <group {...props} dispose={null}>
       <Html fullscreen>
-        <div
-          style={{
-            position: "absolute",
-            left: "16px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            pointerEvents: "none",
-          }}
-        >
+        <div className="hero-three-canvas-control">
           <button
             type="button"
             onClick={runGlowSequence}
