@@ -148,8 +148,8 @@ function App() {
 
       <div className="video-banner">
         <img
-          // src="https://res.cloudinary.com/db7i9febj/image/upload/v1795432927/pelicule1Tiny_wfsvwc.png"
-          src="https://res.cloudinary.com/db7i9febj/image/upload/v1795550765/pelicule1BisTiny_znct6j.png"
+          src="https://res.cloudinary.com/db7i9febj/image/upload/v1795432927/pelicule1Tiny_wfsvwc.png"
+          // src="https://res.cloudinary.com/db7i9febj/image/upload/v1795550765/pelicule1BisTiny_znct6j.png"
           alt="Filmstrip banner"
         />
         <button
@@ -214,48 +214,6 @@ function App() {
       </dialog>
 
       <main id="top">
-        {/* start of Featured top section */}
-
-        {/* <section className="hero-section" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <span className="eyebrow">
-              3D artist · creative developer · visual storyteller
-            </span>
-            <h1 id="hero-title">
-              A portfolio for art, WebGL experiments, videos, and product
-              design.
-            </h1>
-            <p>
-              Use this structure as your personal showroom: large featured work,
-              quick project filters, process notes, daily-life media, and a
-              strong contact section for commissions or jobs.
-            </p>
-            <div className="hero-actions">
-              <a className="button primary" href="#work">
-                Explore structure
-              </a>
-              <a className="button secondary" href="#about">
-                Planning notes
-              </a>
-            </div>
-          </div>
-
-          <div
-            className="hero-stage"
-            aria-label="Interactive 3D material preview"
-          >
-            <Scene3D_2 />
-            <div className="stage-caption">
-              <strong>Live 3D preview</strong>
-              <span>
-                Later: load your best scene, shader, or product object here.
-              </span>
-            </div>
-          </div>
-        </section> */}
-
-        {/* end of Featured top section */}
-
         <EcommerceSection preview />
 
         <ThreeJsSection preview />

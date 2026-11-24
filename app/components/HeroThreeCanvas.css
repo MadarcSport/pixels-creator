@@ -1,6 +1,15 @@
-.hero-three-canvas {
+.hero-three-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   width: 100%;
   height: 100%;
+}
+
+.hero-three-canvas {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
   /* border: 1px solid rgba(148, 163, 184, 0.3); */
   /* border-radius: 1rem; */
@@ -12,16 +21,34 @@
 }
 
 .hero-three-canvas-control {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
 }
 
-@media (max-width: 767px) {
-  .hero-three-canvas-control {
-    top: 16px;
-    transform: none;
-  }
+.hero-three-turn-on {
+  margin: 0;
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1px solid #32d3ff;
+  background: linear-gradient(
+    135deg,
+    rgba(3, 12, 30, 0.92),
+    rgba(7, 27, 52, 0.9)
+  );
+  box-shadow:
+    0 0 0 1px rgba(125, 235, 255, 0.3) inset,
+    0 10px 30px rgba(0, 180, 255, 0.28),
+    0 2px 8px rgba(2, 6, 23, 0.55);
+  color: #d7f6ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(125, 235, 255, 0.55);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+  white-space: nowrap;
 }

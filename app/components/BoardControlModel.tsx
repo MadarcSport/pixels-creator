@@ -6,10 +6,18 @@ Command: npx gltfjsx@6.5.3 public/board_Control_02.glb -o app/components/BoardCo
 */
 
 import * as THREE from "three";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import type { Ref } from "react";
 import type { GroupProps } from "@react-three/fiber";
 import type {} from "../../src/vite-env";
-import { Html, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import type { GLTF } from "three-stdlib";
 import {
   createBlackPlasticMaterial,
@@ -85,7 +93,18 @@ type GLTFResult = GLTF & {
   };
 };
 
-export default function BoardControlModel(props: GroupProps) {
+export type BoardControlHandle = {
+  turnOn: () => void;
+};
+
+type BoardControlModelProps = GroupProps & {
+  controlRef?: Ref<BoardControlHandle>;
+};
+
+export default function BoardControlModel({
+  controlRef,
+  ...props
+}: BoardControlModelProps) {
   const glowStepMs = 140;
   const maxGlowLevel = 9;
   const maxGlowLevelOneRing = 8;
@@ -308,6 +327,10 @@ export default function BoardControlModel(props: GroupProps) {
     ],
   );
 
+  useImperativeHandle(controlRef, () => ({ turnOn: runGlowSequence }), [
+    runGlowSequence,
+  ]);
+
   const getSequencedGlowMaterial = useCallback(
     (
       level: number,
@@ -364,36 +387,6 @@ export default function BoardControlModel(props: GroupProps) {
 
   return (
     <group {...props} dispose={null}>
-      <Html fullscreen>
-        <div className="hero-three-canvas-control">
-          <button
-            type="button"
-            onClick={runGlowSequence}
-            style={{
-              padding: "11px 18px",
-              borderRadius: "999px",
-              border: "1px solid #32d3ff",
-              background:
-                "linear-gradient(135deg, rgba(3, 12, 30, 0.92), rgba(7, 27, 52, 0.9))",
-              boxShadow:
-                "0 0 0 1px rgba(125, 235, 255, 0.3) inset, 0 10px 30px rgba(0, 180, 255, 0.28), 0 2px 8px rgba(2, 6, 23, 0.55)",
-              color: "#d7f6ff",
-              fontSize: "12px",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              textShadow: "0 0 10px rgba(125, 235, 255, 0.55)",
-              backdropFilter: "blur(3px)",
-              cursor: "pointer",
-              whiteSpace: "nowrap",
-              pointerEvents: "auto",
-            }}
-          >
-            Turn On
-          </button>
-        </div>
-      </Html>
-
       <group position={[277.628, 16.762, -0.317]}>
         <mesh
           geometry={nodes.level11.geometry}
