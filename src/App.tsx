@@ -5,6 +5,8 @@ import { EcommerceSection } from "./components/EcommerceSection";
 import { ThreeJsSection } from "./components/ThreeJsSection";
 import { Scene3d_3 } from "./components/Scene3d_3";
 
+const HeroThreeCanvas = lazy(() => import("../app/components/HeroThreeCanvas"));
+
 const Scene3D_2 = lazy(() =>
   import("./components/Scene3D_2").then((module) => ({
     default: module.Scene3D_2,
@@ -164,6 +166,15 @@ function App() {
           </svg>
         </button>
       </div>
+
+      <section
+        className="hero-three-section"
+        aria-label="Animated 3D motherboard showcase"
+      >
+        <DeferredScene>
+          <HeroThreeCanvas />
+        </DeferredScene>
+      </section>
 
       <dialog
         className="video-dialog"

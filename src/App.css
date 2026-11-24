@@ -127,6 +127,12 @@ main {
   padding: 3.5rem 0 5rem;
 }
 
+.hero-three-section {
+  width: min(1180px, calc(100% - 2rem));
+  height: clamp(300px, 56.25vw, 520px);
+  margin: 2rem auto 0;
+}
+
 .hero-section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
@@ -708,7 +714,7 @@ main {
 .video-banner {
   position: relative;
   width: min(1180px, calc(100% - 2rem));
-  margin: 2rem auto 0;
+  margin: 1rem auto 0;
 }
 
 .video-banner > img {
