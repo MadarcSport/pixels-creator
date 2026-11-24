@@ -148,7 +148,8 @@ function App() {
 
       <div className="video-banner">
         <img
-          src="https://res.cloudinary.com/db7i9febj/image/upload/v1795432927/pelicule1Tiny_wfsvwc.png"
+          // src="https://res.cloudinary.com/db7i9febj/image/upload/v1795432927/pelicule1Tiny_wfsvwc.png"
+          src="https://res.cloudinary.com/db7i9febj/image/upload/v1795550765/pelicule1BisTiny_znct6j.png"
           alt="Filmstrip banner"
         />
         <button
