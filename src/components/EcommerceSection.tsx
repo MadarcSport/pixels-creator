@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ecommerceProducts } from "../data/ecommerceProducts";
+import { ProjectSummary } from "./ProjectSummary";
 
 interface EcommerceSectionProps {
   preview?: boolean;
@@ -22,7 +23,7 @@ export function EcommerceSection({ preview = false }: EcommerceSectionProps) {
     <>
       <div className="section-heading featured-labs-heading" id="ecommerce">
         <div>
-          <span className="eyebrow">Product development</span>
+          {/* <span className="eyebrow">Product development</span> */}
           {preview ? (
             <h2 id="ecommerce-title">Ecommerce</h2>
           ) : (
@@ -92,11 +93,11 @@ export function EcommerceSection({ preview = false }: EcommerceSectionProps) {
         <div className="featured-project-copy">
           <span className="eyebrow">Ecommerce · end-to-end product work</span>
           <h3>Product developer</h3>
-          <p className="project-summary">
+          <ProjectSummary collapsible={preview}>
             Designed products, developed and patented the ideas, found factories
             to manufacture them, and brought them to market—with Amazon FBA and
             A+ Content creation.
-          </p>
+          </ProjectSummary>
           <div className="project-tags" aria-label="Product development work">
             <span>Product design</span>
             <span>Patents</span>

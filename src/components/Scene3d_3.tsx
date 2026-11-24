@@ -47,12 +47,12 @@ export function Scene3d_3() {
       aria-labelledby="material-showcase-title"
     >
       <div className="section-heading">
-        <span className="eyebrow">Shader & surface studies</span>
+        {/* <span className="eyebrow">Shader & surface studies</span> */}
         <h2 id="material-showcase-title">One sphere. Four surfaces.</h2>
-        <p>
+        {/* <p>
           Exploring procedural grain, metallic reflections, and the details that
           bring a surface to life.
-        </p>
+        </p> */}
       </div>
 
       <div

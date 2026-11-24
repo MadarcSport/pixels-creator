@@ -199,7 +199,7 @@ export default function LogoMotherboard2Model(
       >
         <mesh
           geometry={nodes.cache2.geometry}
-          material={ironMaterial}
+          material={blackPlasticMaterial}
           position={[0, -48.429, 0]}
           rotation={[-Math.PI / 2, 0, 0]}
         />
@@ -213,7 +213,7 @@ export default function LogoMotherboard2Model(
         >
           <mesh
             geometry={nodes.elise2.geometry}
-            material={blackPlasticMaterial}
+            material={ironBlackMaterial}
             position={elise2CenterOffset}
           />
         </group>
@@ -229,7 +229,7 @@ export default function LogoMotherboard2Model(
       >
         <mesh
           geometry={nodes.cache1.geometry}
-          material={ironMaterial}
+          material={blackPlasticMaterial}
           position={[-0.02, -48.429, 0.031]}
           rotation={[-Math.PI / 2, 0, 0]}
         />
@@ -243,7 +243,7 @@ export default function LogoMotherboard2Model(
         >
           <mesh
             geometry={nodes.elise1.geometry}
-            material={blackPlasticMaterial}
+            material={ironBlackMaterial}
             position={elise1CenterOffset}
           />
         </group>

@@ -1,3 +1,10 @@
+#material-showcase-title {
+  font-size: 48px;
+  color: #fdac02;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
 .material-showcase {
   margin: 5rem 0;
   text-align: center;

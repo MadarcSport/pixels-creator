@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { featuredProjects } from "../data/featuredProjects";
+import { ProjectSummary } from "./ProjectSummary";
 
 interface ThreeJsSectionProps {
   preview?: boolean;
@@ -25,7 +26,7 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
         id="featured-project"
       >
         <div>
-          <span className="eyebrow">Interactive experiments</span>
+          {/* <span className="eyebrow">Interactive experiments</span> */}
           {preview ? (
             <h2 id="featured-labs-title">Three.js Labs</h2>
           ) : (
@@ -102,20 +103,34 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
           )}
         </div>
         <div className="featured-project-copy">
-          <span className="eyebrow">Featured project</span>
+          <span className="eyebrow">
+            {preview ? "Interactive 3D experiments" : "Featured project"}
+          </span>
           <h3 id="featured-project-title" aria-live="polite">
-            {activeProject.title}
+            {preview
+              ? "Exploring the possibilities of 3D on the web"
+              : activeProject.title}
           </h3>
-          <p className="project-summary">{activeProject.summary}</p>
-          <div className="project-tags" aria-label="Project features">
-            {activeProject.tags.map((tag) => (
+          <ProjectSummary collapsible={preview}>
+            {preview
+              ? "Discover a collection of Three.js projects exploring interactive scenes, creative visuals, and real-time experiences. Each experiment brings together design and code to make 3D part of the web."
+              : activeProject.summary}
+          </ProjectSummary>
+          <div
+            className="project-tags"
+            aria-label={preview ? "Collection themes" : "Project features"}
+          >
+            {(preview
+              ? ["Three.js", "Interactive 3D", "Web experiments"]
+              : activeProject.tags
+            ).map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
           </div>
           <div className="project-actions">
             {preview ? (
               <Link className="button primary" to="/threejs">
-                See more <span aria-hidden="true">→</span>
+                Explore the labs <span aria-hidden="true">→</span>
               </Link>
             ) : (
               <a
@@ -127,7 +142,7 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
                 Explore the experience <span aria-hidden="true">↗</span>
               </a>
             )}
-            {activeProject.githubUrl && (
+            {!preview && activeProject.githubUrl && (
               <a
                 className="button secondary github-button"
                 href={activeProject.githubUrl}

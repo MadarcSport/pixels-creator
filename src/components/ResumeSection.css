@@ -1,0 +1,92 @@
+.resume-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  margin-top: 4rem;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 0% 100%, rgba(253, 172, 2, 0.1), transparent 60%),
+    rgba(255, 255, 255, 0.045);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+}
+
+.resume-preview {
+  width: min(100%, 320px);
+  margin: 0;
+  justify-self: center;
+}
+
+.resume-preview a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.65rem;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+}
+
+.resume-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.resume-preview figcaption {
+  margin-top: 1rem;
+  color: rgba(248, 244, 238, 0.6);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.resume-copy h2 {
+  margin: 1rem 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.resume-copy p {
+  max-width: 42ch;
+  margin: 0 0 2rem;
+  color: rgba(248, 244, 238, 0.68);
+  line-height: 1.8;
+}
+
+.resume-download {
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  padding: 0.8rem 1.15rem;
+}
+
+.resume-download svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+}
+
+.resume-download-format {
+  padding: 0.2rem 0.45rem;
+  border: 1px solid currentColor;
+  border-radius: 0.35rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+.resume-download:hover {
+  filter: brightness(1.08);
+}
+
+.resume-preview a:focus-visible,
+.resume-download:focus-visible {
+  outline: 3px solid #fdac02;
+  outline-offset: 5px;
+}
+
+@media (max-width: 640px) {
+  .resume-section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

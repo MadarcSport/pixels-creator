@@ -29,7 +29,7 @@ export default function HeroThreeCanvas() {
     () => ({
       fov: isMobile ? 30 : 30,
       position: isMobile
-        ? ([BASE_CAMERA_POSITION[0], BASE_CAMERA_POSITION[1] + 12, 360] as [
+        ? ([BASE_CAMERA_POSITION[0], BASE_CAMERA_POSITION[1] + 12, 370] as [
             number,
             number,
             number,
