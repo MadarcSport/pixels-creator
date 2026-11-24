@@ -27,9 +27,9 @@ export default function HeroThreeCanvas() {
 
   const cameraConfig = useMemo(
     () => ({
-      fov: isMobile ? 36 : 30,
+      fov: isMobile ? 30 : 30,
       position: isMobile
-        ? ([BASE_CAMERA_POSITION[0], BASE_CAMERA_POSITION[1] + 12, 380] as [
+        ? ([BASE_CAMERA_POSITION[0], BASE_CAMERA_POSITION[1] + 12, 360] as [
             number,
             number,
             number,
