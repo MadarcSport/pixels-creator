@@ -1,5 +1,6 @@
 import "./App.css";
 import { lazy, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { DeferredScene } from "./components/DeferredScene";
 import { EcommerceSection } from "./components/EcommerceSection";
 import { ThreeJsSection } from "./components/ThreeJsSection";
@@ -90,14 +91,20 @@ function App() {
           className={`nav-links${isMobileMenuOpen ? " is-open" : ""}`}
           id="main-navigation-links"
         >
+          <a href="#my-stack" onClick={() => setIsMobileMenuOpen(false)}>
+            My stack
+          </a>
+          <a href="#ecommerce" onClick={() => setIsMobileMenuOpen(false)}>
+            Ecommerce
+          </a>
           <a
             href="#featured-project"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Featured
+            Threejs
           </a>
-          <a href="#work" onClick={() => setIsMobileMenuOpen(false)}>
-            Work
+          <a href="#resume" onClick={() => setIsMobileMenuOpen(false)}>
+            My resume
           </a>
         </div>
       </nav>
@@ -151,12 +158,26 @@ function App() {
 
       <section
         className="hero-three-section"
+        id="my-stack"
         aria-label="Animated 3D motherboard showcase"
       >
         <DeferredScene>
           <HeroThreeCanvas />
         </DeferredScene>
       </section>
+
+      <div className="stack-preview">
+        <Link className="button primary stack-preview-link" to="/my-stack">
+          My Stack
+        </Link>
+        <img
+          className="stack-preview-image"
+          src="https://res.cloudinary.com/db7i9febj/image/upload/v1795638525/staks-horizontal1Tiny_n72rep.png"
+          alt="My creative and development tool stack"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
 
       <dialog
         className="video-dialog"

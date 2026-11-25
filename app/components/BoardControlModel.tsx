@@ -24,6 +24,7 @@ import {
   createIronBlackMaterial,
   createIronMaterial,
 } from "../../src/materials/modelMaterials";
+// import MetalPbrMaterial from "../../src/materials/MetalPbrMaterial";
 
 // Enables KHR_draco_mesh_compression for GLBs that include Draco-compressed meshes.
 useGLTF.setDecoderPath(
@@ -141,6 +142,7 @@ export default function BoardControlModel({
     ? nodes.Cylinder_adobe.material[0]
     : nodes.Cylinder_adobe.material;
 
+  // Keep available for manually switching a mesh back to the original iron.
   const ironMaterial = useMemo(
     () =>
       supportBaseMaterial instanceof THREE.MeshStandardMaterial
@@ -595,6 +597,12 @@ export default function BoardControlModel({
             material={materials["PBR.1"]}
           />
         </group>
+        {/* <mesh
+          geometry={nodes.Cylinder_support_c4d.geometry}
+          position={[73.733, 40.298, -137.494]}
+        >
+          <MetalPbrMaterial />
+        </mesh> */}
         <mesh
           geometry={nodes.Cylinder_support_c4d.geometry}
           material={ironMaterial}
@@ -679,11 +687,18 @@ export default function BoardControlModel({
         // material={ironMaterial}
         position={[277.143, 116.123, -72.994]}
       />
+      {/* <mesh
+        geometry={nodes.support.geometry}
+        position={[83.609, -146.992, -3.275]}
+      >
+        <MetalPbrMaterial repeat={[1, 1]} />
+      </mesh> */}
       <mesh
         geometry={nodes.support.geometry}
         material={ironMaterial}
         position={[83.609, -146.992, -3.275]}
       />
+
       <mesh
         geometry={nodes.side_jointure.geometry}
         material={IronBlackMaterial}

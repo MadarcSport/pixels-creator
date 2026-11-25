@@ -19,19 +19,15 @@
   justify-self: center;
 }
 
-.resume-preview a {
+.resume-preview img {
   display: block;
+  width: 100%;
+  height: auto;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 0.65rem;
   background: #fff;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
-}
-
-.resume-preview img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 .resume-preview figcaption {
@@ -79,7 +75,6 @@
   filter: brightness(1.08);
 }
 
-.resume-preview a:focus-visible,
 .resume-download:focus-visible {
   outline: 3px solid #fdac02;
   outline-offset: 5px;

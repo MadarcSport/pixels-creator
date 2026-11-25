@@ -1,0 +1,271 @@
+.roadmap {
+  --ink: #182948;
+  --connector: #526c96;
+  --gap: 2.25rem;
+  --step: 1.75rem;
+  container-type: inline-size;
+  box-sizing: border-box;
+  max-inline-size: 66rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  border: 1px solid #dce5f5;
+  border-radius: 1.75rem;
+  background: #f6f8fe;
+  color: var(--ink);
+  font-family: system-ui, sans-serif;
+}
+
+.banner {
+  padding: clamp(1.4rem, 4vw, 2.7rem);
+  border-radius: 1.25rem;
+  background: linear-gradient(130deg, #10274c, #193d70);
+  color: white;
+}
+
+.banner p {
+  margin: 0 0 0.8rem;
+  color: #bdd1f3;
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.banner h2 {
+  margin: 0;
+  font-size: clamp(1.85rem, 5vw, 3.65rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.banner span {
+  display: block;
+  color: #9ae9ff;
+}
+
+.narrow {
+  max-inline-size: 39rem;
+  margin-inline: auto;
+}
+
+.card {
+  --wash: #edf5ff;
+  --band: #d4e7ff;
+  --accent: #184d84;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  height: 100%;
+  border: 1px solid var(--band);
+  border-radius: 1rem;
+  background: var(--wash);
+  box-shadow: 0 4px 0 #1b3f790d;
+  overflow: hidden;
+}
+
+.card[data-tone="green"] {
+  --wash: #edf9f4;
+  --band: #c7eee0;
+  --accent: #12634f;
+}
+.card[data-tone="amber"] {
+  --wash: #fff7eb;
+  --band: #ffe4bb;
+  --accent: #814516;
+}
+.card[data-tone="violet"] {
+  --wash: #f5f0ff;
+  --band: #e7dcff;
+  --accent: #573886;
+}
+.card[data-tone="rose"] {
+  --wash: #fff1f6;
+  --band: #f9dce9;
+  --accent: #843355;
+}
+
+.cardTitle {
+  margin: 0;
+  padding: 0.65rem 1rem;
+  background: var(--band);
+  color: var(--accent);
+  font-size: 1.06rem;
+  font-weight: 760;
+  line-height: 1.25;
+}
+
+.cardBody {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.cardBody p {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tools li {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--band);
+  border-radius: 0.45rem;
+  background: white;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+
+.arrow,
+.assetConnector,
+.merge {
+  position: relative;
+  block-size: var(--step);
+}
+
+.arrow::before,
+.assetConnector::before,
+.merge::after {
+  position: absolute;
+  inset-block: 0 4px;
+  inset-inline-start: calc(50% - 1px);
+  width: 2px;
+  background: var(--connector);
+  content: "";
+}
+
+.arrow::after,
+.assetConnector span::after,
+.merge span::after {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: calc(50% - 5px);
+  border-inline: 5px solid transparent;
+  border-block-start: 7px solid var(--connector);
+  content: "";
+}
+
+.assetConnector::before {
+  inset-block-end: 50%;
+}
+
+.assetConnector span {
+  position: absolute;
+  inset: 50% 50% 0 calc((100% - var(--gap)) / 4);
+  border-block-start: 2px solid var(--connector);
+  border-inline-start: 2px solid var(--connector);
+  border-start-start-radius: 6px;
+}
+
+.assetConnector span::after {
+  inset-inline-start: -6px;
+}
+
+.scene,
+.shaders,
+.pageConnector {
+  position: relative;
+}
+
+.scene::after {
+  position: absolute;
+  inset-inline-start: 100%;
+  inset-block-start: 50%;
+  inline-size: var(--gap);
+  border-block-start: 2px dashed #a45c7c;
+  content: "";
+}
+
+.shaders::before {
+  position: absolute;
+  inset-inline-start: -5px;
+  inset-block-start: calc(50% - 4px);
+  border-block: 5px solid transparent;
+  border-inline-start: 6px solid #a45c7c;
+  content: "";
+}
+
+.pageConnector::after,
+.shaders::after {
+  position: absolute;
+  inset-inline-end: 1.25rem;
+  block-size: 100%;
+  border-inline-end: 2px solid var(--connector);
+  content: "";
+}
+
+.shaders::after {
+  inset-block-start: 0;
+  inset-inline-end: 1.25rem;
+  border-color: var(--connector);
+  /* Route the page directly to the merge, alongside the optional card. */
+  transform: translateX(1.85rem);
+}
+
+.pageConnector::after {
+  inset-inline-end: -0.6rem;
+  inline-size: 1.85rem;
+  border-block-start: 2px solid var(--connector);
+  border-inline-start: 2px solid var(--connector);
+}
+
+.merge::before {
+  position: absolute;
+  inset: 0 -0.6rem 50% calc((100% - var(--gap)) / 4);
+  border: 2px solid var(--connector);
+  border-block-start: 0;
+  border-radius: 0 0 7px 7px;
+  content: "";
+}
+
+.merge::after {
+  inset-block-start: 50%;
+}
+
+@container (max-width: 42rem) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+  .columns > .arrow,
+  .pageConnector,
+  .scene::after,
+  .shaders::before,
+  .shaders::after,
+  .assetConnector span,
+  .merge::before {
+    display: none;
+  }
+  .assetConnector::before,
+  .merge::after {
+    inset-block: 0 4px;
+  }
+  .assetConnector span {
+    display: block;
+    inset: 0;
+    border: 0;
+  }
+  .assetConnector span::after {
+    inset-inline-start: calc(50% - 5px);
+  }
+  .shaders {
+    margin-inline-start: 0.85rem;
+  }
+  .shaders .card {
+    border-style: dashed;
+  }
+}

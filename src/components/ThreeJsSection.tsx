@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { featuredProjects } from "../data/featuredProjects";
 import { ProjectSummary } from "./ProjectSummary";
+import { ArtDesignSection } from "./ArtDesignSection";
 
 interface ThreeJsSectionProps {
   preview?: boolean;
@@ -28,7 +29,7 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
         <div>
           {/* <span className="eyebrow">Interactive experiments</span> */}
           {preview ? (
-            <h2 id="featured-labs-title">Three.js Labs</h2>
+            <h2 id="featured-labs-title">3D art - Three.js Labs</h2>
           ) : (
             <h1 id="featured-labs-title">Three.js Labs</h1>
           )}
@@ -111,7 +112,7 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
               ? "Exploring the possibilities of 3D on the web"
               : activeProject.title}
           </h3>
-          <ProjectSummary collapsible={preview}>
+          <ProjectSummary collapsible>
             {preview
               ? "Discover a collection of Three.js projects exploring interactive scenes, creative visuals, and real-time experiences. Each experiment brings together design and code to make 3D part of the web."
               : activeProject.summary}
@@ -185,6 +186,7 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
           ))}
         </div>
       )}
+      {!preview && <ArtDesignSection />}
     </>
   );
 }

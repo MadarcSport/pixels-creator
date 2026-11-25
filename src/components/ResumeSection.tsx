@@ -14,27 +14,19 @@ export function ResumeSection() {
       aria-labelledby="resume-title"
     >
       <figure className="resume-preview">
-        <a
-          href={resumeThumbnailUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open a larger preview of Marc Toubia's résumé (new tab)"
-        >
-          <img
-            src={resumeThumbnailUrl}
-            alt="Preview of Marc Toubia's résumé"
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
-        <figcaption>Click the preview to take a closer look.</figcaption>
+        <img
+          src={resumeThumbnailUrl}
+          alt="Preview of Marc Toubia's résumé"
+          loading="lazy"
+          decoding="async"
+        />
       </figure>
 
       <div className="resume-copy">
         <span className="eyebrow">Experience & skills</span>
         <h2 id="resume-title">My resume.</h2>
         <p>
-          Explore my background in UX/UI design, React development, and
+          Explore my background in Branding development, React development, and
           interactive 3D. Download my resume to learn more about my experience
           and skills.
         </p>

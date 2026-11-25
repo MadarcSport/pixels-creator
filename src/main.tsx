@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { EcommercePage } from "./components/EcommercePage.tsx";
 import { ThreeJsPage } from "./components/ThreeJsPage.tsx";
+import { StackRoadmapPage } from "./components/roadMap/StackRoadmapPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<App />} />
         <Route path="/ecommerce" element={<EcommercePage />} />
         <Route path="/threejs" element={<ThreeJsPage />} />
+        <Route path="/my-stack" element={<StackRoadmapPage />} />
       </Routes>
       <Analytics />
     </BrowserRouter>

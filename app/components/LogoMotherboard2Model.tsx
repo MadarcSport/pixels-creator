@@ -15,6 +15,7 @@ import {
   createIronMaterial,
   createIronBlackMaterial,
 } from "../../src/materials/modelMaterials";
+// import MetalPbrMaterial from "../../src/materials/MetalPbrMaterial";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -258,6 +259,7 @@ export default function LogoMotherboard2Model(
         material={ironBlackMaterial}
         position={[-327.414, 300.933, -78.303]}
       />
+
       <mesh
         geometry={nodes.wire_connect.geometry}
         material={ironBlackMaterial}
