@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
+import * as THREE from "three";
 import BoardControlModel from "./BoardControlModel";
 import type { BoardControlHandle } from "./BoardControlModel";
 import LogoMotherboard2Model from "./LogoMotherboard2Model";
@@ -54,7 +55,12 @@ export default function HeroThreeCanvas() {
         <Canvas
           camera={cameraConfig}
           dpr={[1, 2]}
-          gl={{ antialias: true, alpha: true }}
+          gl={{
+            antialias: true,
+            alpha: true,
+            toneMapping: THREE.ACESFilmicToneMapping,
+            toneMappingExposure: 0.43,
+          }}
           onCreated={({ camera }) => {
             camera.lookAt(...CAMERA_TARGET);
           }}
@@ -62,12 +68,17 @@ export default function HeroThreeCanvas() {
           {/* Transparent background: keep this line removed */}
           {/* <color attach="background" args={["#0f172a"]} /> */}
 
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[50, 200, 180]} intensity={0.2} />
+          <ambientLight intensity={100.0} />
+          <hemisphereLight
+            args={["#b1e1ff", "#3b3024", 0.6]}
+            position={[10, 10, 10]}
+            intensity={30.8}
+          />
+          {/* <directionalLight position={[50, 200, 180]} intensity={0.2} /> */}
           <directionalLight
-            position={[-200, 120, -100]}
-            intensity={0.6}
-            color="#60a5fa"
+            position={[-10, 20, 10]}
+            intensity={100.6}
+            color="#ffd6a7"
           />
 
           <Suspense fallback={null}>

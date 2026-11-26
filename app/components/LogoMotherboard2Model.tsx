@@ -146,13 +146,7 @@ export default function LogoMotherboard2Model(
     ? nodes.cache2.material[0]
     : nodes.cache2.material;
 
-  const blackPlasticMaterial = useMemo(
-    () =>
-      elise2BaseMaterial instanceof THREE.MeshStandardMaterial
-        ? createBlackPlasticMaterial(elise2BaseMaterial)
-        : elise2BaseMaterial,
-    [elise2BaseMaterial],
-  );
+  const blackPlasticMaterial = useMemo(() => createBlackPlasticMaterial(), []);
 
   const ironMaterial = useMemo(
     () =>
@@ -172,9 +166,7 @@ export default function LogoMotherboard2Model(
 
   useEffect(() => {
     return () => {
-      if (blackPlasticMaterial !== elise2BaseMaterial) {
-        blackPlasticMaterial.dispose();
-      }
+      blackPlasticMaterial.dispose();
 
       if (ironMaterial !== cache2BaseMaterial) {
         ironMaterial.dispose();
@@ -200,7 +192,7 @@ export default function LogoMotherboard2Model(
       >
         <mesh
           geometry={nodes.cache2.geometry}
-          material={blackPlasticMaterial}
+          material={ironBlackMaterial}
           position={[0, -48.429, 0]}
           rotation={[-Math.PI / 2, 0, 0]}
         />
@@ -230,7 +222,7 @@ export default function LogoMotherboard2Model(
       >
         <mesh
           geometry={nodes.cache1.geometry}
-          material={blackPlasticMaterial}
+          material={ironBlackMaterial}
           position={[-0.02, -48.429, 0.031]}
           rotation={[-Math.PI / 2, 0, 0]}
         />

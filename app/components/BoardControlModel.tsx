@@ -24,6 +24,7 @@ import {
   createIronBlackMaterial,
   createIronMaterial,
 } from "../../src/materials/modelMaterials";
+import MetalPbrMaterial from "../../src/materials/MetalPbrMaterial";
 // import MetalPbrMaterial from "../../src/materials/MetalPbrMaterial";
 
 // Enables KHR_draco_mesh_compression for GLBs that include Draco-compressed meshes.
@@ -179,7 +180,7 @@ export default function BoardControlModel({
 
         metalness: 0.9,
         roughness: 0.1,
-        toneMapped: false,
+        toneMapped: true,
       }),
     [],
   );
@@ -204,11 +205,11 @@ export default function BoardControlModel({
         // color: "#00ff4c",
         // emissive: "#16ce4d",
         color: "#ff6f00",
-        emissive: "#ff6f00",
+        emissive: "#ffe100",
         emissiveIntensity: bluePulseBaseIntensity,
-        metalness: 0.1,
-        roughness: 0.3,
-        toneMapped: false,
+        metalness: 0.9,
+        roughness: 0.1,
+        toneMapped: true,
       }),
     [bluePulseBaseIntensity],
   );
@@ -666,16 +667,23 @@ export default function BoardControlModel({
         material={IronBlackMaterial}
         position={[224.276, -220.506, 7.534]}
       />
+
       <mesh
         geometry={nodes.Sweep_adobe.geometry}
-        material={nodes.Sweep_adobe.material}
+        material={ironMaterial}
         position={[232.96, -220.402, 9.374]}
       />
-      <mesh
+      {/* <mesh
         geometry={nodes.Cylinder_adobe.geometry}
         material={blackPlasticMaterial}
         position={[357.077, -248.02, 4.939]}
-      />
+      /> */}
+      <mesh
+        geometry={nodes.Cylinder_adobe.geometry}
+        position={[357.077, -248.02, 4.939]}
+      >
+        <MetalPbrMaterial />
+      </mesh>
       <mesh
         geometry={nodes.theetWheel1.geometry}
         material={IronBlackMaterial}
@@ -684,7 +692,6 @@ export default function BoardControlModel({
       <mesh
         geometry={nodes.cursor.geometry}
         material={IronBlackMaterial}
-        // material={ironMaterial}
         position={[277.143, 116.123, -72.994]}
       />
       {/* <mesh
