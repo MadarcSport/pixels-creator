@@ -3,9 +3,9 @@ import { Material, MeshStandardMaterial } from "three";
 // Keep model materials in source code: Vite serves public assets unchanged.
 function createProceduralIronMaterial(baseMaterial: MeshStandardMaterial) {
   const material = baseMaterial.clone();
-  material.color.set("#c2c1c1");
+  material.color.set("#72c0ff");
   material.metalness = 1;
-  material.roughness = 0.2;
+  material.roughness = 0.01;
 
   material.onBeforeCompile = (shader) => {
     shader.fragmentShader = shader.fragmentShader
@@ -29,13 +29,13 @@ function createProceduralIronMaterial(baseMaterial: MeshStandardMaterial) {
       .replace(
         "#include <color_fragment>",
         `#include <color_fragment>
-        vec2 ironUv = vViewPosition.xy * 38.0;
+        vec2 ironUv = vViewPosition.xy * 78.0;
         float broadGrain = ironNoise(ironUv);
-        float fineGrain = ironNoise(ironUv * 7.0);
+        float fineGrain = ironNoise(ironUv * 70.0);
         float scratchLines = pow(abs(sin((vViewPosition.x + vViewPosition.y * 0.25) * 95.0)), 18.0);
-        diffuseColor.rgb *= vec3(0.067, 0.404, 0.659);
-        diffuseColor.rgb += broadGrain * 0.09;
-        diffuseColor.rgb += fineGrain * 0.04;
+        diffuseColor.rgb *= vec3(0.008, 0.369, 0.612);
+        diffuseColor.rgb += broadGrain * 0.05;
+        diffuseColor.rgb += fineGrain * 0.091;
         diffuseColor.rgb += scratchLines * 0.09;`,
       )
       .replace(
@@ -51,9 +51,9 @@ function createProceduralIronMaterial(baseMaterial: MeshStandardMaterial) {
 
 function createProceduralIronBlackMaterial(baseMaterial: MeshStandardMaterial) {
   const material = baseMaterial.clone();
-  material.color.set("#050505");
+  material.color.set("#000000");
   material.metalness = 1;
-  material.roughness = 0.2;
+  material.roughness = 0;
 
   material.onBeforeCompile = (shader) => {
     shader.fragmentShader = shader.fragmentShader
@@ -81,10 +81,10 @@ function createProceduralIronBlackMaterial(baseMaterial: MeshStandardMaterial) {
         float broadGrain = ironNoise(ironUv);
         float fineGrain = ironNoise(ironUv * 7.0);
         float scratchLines = pow(abs(sin((vViewPosition.x + vViewPosition.y * 0.25) * 95.0)), 18.0);
-        diffuseColor.rgb *= vec3(0.72, 0.70, 0.66);
-        diffuseColor.rgb += broadGrain * 0.08;
-        diffuseColor.rgb += fineGrain * 0.02;
-        diffuseColor.rgb += scratchLines * 0.03;`,
+        diffuseColor.rgb *= vec3(0.129, 0.129, 0.129);
+        diffuseColor.rgb += broadGrain * 0.045;
+        diffuseColor.rgb += fineGrain * 0.03;
+        diffuseColor.rgb += scratchLines * 0.01;`,
       )
       .replace(
         "#include <roughnessmap_fragment>",

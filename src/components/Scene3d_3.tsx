@@ -114,13 +114,6 @@ export function Scene3d_3() {
               </button>
             ))}
           </div>
-          <p
-            className="material-showcase-description"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {selectedMaterial.description}
-          </p>
           <p className="material-showcase-hint">
             Drag to explore the reflections · Select a surface to compare
           </p>

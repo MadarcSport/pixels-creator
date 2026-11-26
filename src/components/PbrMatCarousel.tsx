@@ -5,30 +5,24 @@ import "./PbrMatCarousel.css";
 type CarouselImage = {
   src: string;
   title: string;
-  caption: string;
 };
 
 const pbrImages: CarouselImage[] = [
   {
     src: "/pictures_carousel/albedoMapCarrousel.png",
     title: "Albedo Map",
-    caption:
-      "Base color data that defines the surface without light or shading.",
   },
   {
     src: "/pictures_carousel/normalMapCarrousel.png",
     title: "Normal Map",
-    caption: "Per-pixel surface direction details for richer micro-geometry.",
   },
   {
-    src: "/pictures_carousel/roughnessMapCarrousel.png",
+    src: "/pictures_carousel/RoughnessMapCarrousel.png",
     title: "Roughness Map",
-    caption: "Controls glossy versus matte reflections across the material.",
   },
   {
     src: "/pictures_carousel/metalnessMapCarrousel.png",
     title: "Metalness Map",
-    caption: "Defines conductive areas to produce metallic light behavior.",
   },
 ];
 
@@ -105,9 +99,9 @@ export function PbrMatCarousel() {
               type="button"
               className={slideClassName}
               style={{
-                transform: `translate(-50%, -50%) translateX(${offset * 56}%) scale(${isActive ? 1 : isSide ? 0.72 : 0.56})`,
-                opacity: isActive ? 1 : isSide ? 0.58 : 0,
-                filter: `blur(${isActive ? 0 : isSide ? 0.4 : 1.8}px)`,
+                transform: `translate(-50%, -50%) translateX(${offset * 52}%) scale(${isActive ? 1.14 : isSide ? 0.68 : 0.5})`,
+                opacity: isActive ? 1 : isSide ? 0.52 : 0,
+                filter: `blur(${isActive ? 0 : isSide ? 0.7 : 2.2}px)`,
                 zIndex: isActive ? 30 : isSide ? 20 : 10,
                 pointerEvents: isFar ? "none" : "auto",
               }}
@@ -140,25 +134,6 @@ export function PbrMatCarousel() {
 
       <div className="pbr-carousel-meta" aria-live="polite" aria-atomic="true">
         <p className="pbr-carousel-title">{activeImage.title}</p>
-        <p className="pbr-carousel-caption">{activeImage.caption}</p>
-      </div>
-
-      <div
-        className="pbr-carousel-dots"
-        role="tablist"
-        aria-label="Choose texture map"
-      >
-        {pbrImages.map((image, index) => (
-          <button
-            key={image.src}
-            type="button"
-            role="tab"
-            aria-selected={activeIndex === index}
-            aria-label={`Show ${image.title}`}
-            className="pbr-carousel-dot"
-            onClick={() => setActiveIndex(index)}
-          />
-        ))}
       </div>
     </section>
   );

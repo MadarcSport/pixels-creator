@@ -171,7 +171,7 @@ export default function BoardControlModel({
   const glowMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: "#ff6f00",
+        color: "#ff9500",
         emissive: "#ff6f00",
         // color: "#00ff4c",
         // emissive: "#16ce4d",
@@ -180,7 +180,7 @@ export default function BoardControlModel({
 
         metalness: 0.98,
         roughness: 0.05,
-        toneMapped: false,
+        toneMapped: true,
       }),
     [],
   );
@@ -209,7 +209,7 @@ export default function BoardControlModel({
         emissiveIntensity: bluePulseBaseIntensity,
         metalness: 0.98,
         roughness: 0.05,
-        toneMapped: false,
+        toneMapped: true,
       }),
     [bluePulseBaseIntensity],
   );

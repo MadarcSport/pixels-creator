@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import * as THREE from "three";
 import BoardControlModel from "./BoardControlModel";
@@ -11,6 +11,40 @@ import "./HeroThreeCanvas.css";
 
 const CAMERA_TARGET: [number, number, number] = [-55, 65, -9];
 const BASE_CAMERA_POSITION: [number, number, number] = [-55, 80, 300];
+const ENVIRONMENT_INTENSITY = 1.2;
+
+function isEnvMapIntensityMaterial(
+  material: THREE.Material,
+): material is THREE.MeshStandardMaterial | THREE.MeshPhysicalMaterial {
+  return "envMapIntensity" in material;
+}
+
+function ApplyEnvironmentIntensity({ intensity }: { intensity: number }) {
+  const scene = useThree((state) => state.scene);
+
+  useEffect(() => {
+    scene.traverse((object) => {
+      if (!(object instanceof THREE.Mesh)) {
+        return;
+      }
+
+      const materials = Array.isArray(object.material)
+        ? object.material
+        : [object.material];
+
+      materials.forEach((material) => {
+        if (!material || !isEnvMapIntensityMaterial(material)) {
+          return;
+        }
+
+        material.envMapIntensity = intensity;
+        material.needsUpdate = true;
+      });
+    });
+  }, [scene, intensity]);
+
+  return null;
+}
 
 export default function HeroThreeCanvas() {
   const boardControlRef = useRef<BoardControlHandle>(null);
@@ -59,7 +93,7 @@ export default function HeroThreeCanvas() {
             antialias: true,
             alpha: true,
             toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 0.63,
+            toneMappingExposure: 0.83,
           }}
           onCreated={({ camera }) => {
             camera.lookAt(...CAMERA_TARGET);
@@ -68,22 +102,29 @@ export default function HeroThreeCanvas() {
           {/* Transparent background: keep this line removed */}
           {/* <color attach="background" args={["#0f172a"]} /> */}
 
-          <ambientLight intensity={100.0} />
+          <ambientLight intensity={10.0} />
           <hemisphereLight
             args={["#b1e1ff", "#3b3024", 0.6]}
             position={[-30, -10, 30]}
-            intensity={500.8}
+            intensity={100.8}
           />
           {/* <directionalLight position={[50, 200, 180]} intensity={0.2} /> */}
           <directionalLight
-            position={[-100, -200, 200]}
+            position={[-250, -200, 200]}
             intensity={200.6}
-            color="#e4e4e4"
+            color="#ffeebe"
           />
 
           <Suspense fallback={null}>
             {/* <Environment files="/moonrise.hdr" background={false} /> */}
-            <Environment files="/material/studio2.hdr" background={false} />
+            <Environment
+              // files="/material/sundowner.hdr"
+              files="/moonrise.hdr"
+              background={false}
+              environmentIntensity={ENVIRONMENT_INTENSITY}
+            />
+
+            <ApplyEnvironmentIntensity intensity={ENVIRONMENT_INTENSITY} />
 
             <group scale={0.2} position={[-55, 65, 0]}>
               <BoardControlModel controlRef={boardControlRef} />
