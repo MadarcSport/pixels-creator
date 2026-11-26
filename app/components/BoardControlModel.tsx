@@ -178,9 +178,9 @@ export default function BoardControlModel({
         // emissiveIntensity: 1.8,
         emissiveIntensity: bluePulseBaseIntensity,
 
-        metalness: 0.9,
-        roughness: 0.1,
-        toneMapped: true,
+        metalness: 0.98,
+        roughness: 0.05,
+        toneMapped: false,
       }),
     [],
   );
@@ -191,8 +191,8 @@ export default function BoardControlModel({
         color: "#0b0b0b",
         emissive: "#050505",
         emissiveIntensity: 0.06,
-        metalness: 0.9,
-        roughness: 0.18,
+        metalness: 0.98,
+        roughness: 0.05,
         envMapIntensity: 1.35,
       }),
     [],
@@ -207,9 +207,9 @@ export default function BoardControlModel({
         color: "#ff6f00",
         emissive: "#ffe100",
         emissiveIntensity: bluePulseBaseIntensity,
-        metalness: 0.9,
-        roughness: 0.1,
-        toneMapped: true,
+        metalness: 0.98,
+        roughness: 0.05,
+        toneMapped: false,
       }),
     [bluePulseBaseIntensity],
   );
@@ -613,7 +613,7 @@ export default function BoardControlModel({
       <group position={[239.651, -317.17, 7.112]}>
         <mesh
           geometry={nodes.adobeLogo.geometry}
-          material={IronBlackMaterial}
+          material={blackPlasticMaterial}
           position={[320.326, -38.693, -27.93]}
         />
         <mesh
@@ -630,7 +630,7 @@ export default function BoardControlModel({
       <group position={[239.651, -218.96, 7.112]}>
         <mesh
           geometry={nodes.OpenGl.geometry}
-          material={IronBlackMaterial}
+          material={blackPlasticMaterial}
           position={[322.832, -34.766, -26.076]}
         />
         <mesh
@@ -647,7 +647,7 @@ export default function BoardControlModel({
       <group position={[239.651, -123.739, 7.112]}>
         <mesh
           geometry={nodes.threeJs.geometry}
-          material={IronBlackMaterial}
+          material={blackPlasticMaterial}
           position={[315.113, -31.819, -27.499]}
           rotation={[0, 0, 0.137]}
         />

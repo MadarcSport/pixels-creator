@@ -1,13 +1,61 @@
 #material-showcase-title {
-  font-size: 48px;
-  color: #fdac02;
   text-align: center;
-  grid-column: 1 / -1;
+}
+
+.material-showcase-mode-toggle {
+  margin: 0 auto 1.3rem;
+  display: flex;
+  width: fit-content;
+  gap: 0.35rem;
+  padding: 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(253, 172, 2, 0.18),
+      transparent 58%
+    ),
+    rgba(22, 24, 33, 0.84);
+}
+
+.material-showcase-mode-button {
+  min-width: 128px;
+  min-height: 44px;
+  padding: 0.55rem 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(248, 244, 238, 0.86);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.material-showcase-mode-button[aria-selected="true"] {
+  color: #1e1c16;
+  background: linear-gradient(130deg, #ffd475, #fdac02 58%, #e68d00);
+  box-shadow: 0 8px 18px -12px rgba(253, 172, 2, 0.85);
+}
+
+.material-showcase-mode-button:focus-visible {
+  outline: 2px solid #fdac02;
+  outline-offset: 3px;
 }
 
 .material-showcase {
   margin: 5rem 0;
   text-align: center;
+}
+
+.material-showcase .section-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.25rem;
 }
 
 .material-showcase .section-heading p {
@@ -99,4 +147,12 @@
   color: #f8f4ee;
   white-space: nowrap;
   font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .material-showcase-mode-button {
+    min-width: 112px;
+    min-height: 40px;
+    font-size: 0.86rem;
+  }
 }

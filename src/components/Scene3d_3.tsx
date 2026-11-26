@@ -1,5 +1,6 @@
 import { lazy, useState } from "react";
 import { DeferredScene } from "./DeferredScene";
+import { PbrMatCarousel } from "./PbrMatCarousel";
 import type { ShowcaseMaterial } from "../materials/showcaseMaterials";
 import "./Scene3d_3.css";
 
@@ -36,6 +37,7 @@ const materialOptions: {
 ];
 
 export function Scene3d_3() {
+  const [viewMode, setViewMode] = useState<"shaders" | "pbr">("shaders");
   const [surface, setSurface] = useState<ShowcaseMaterial>("copper");
   const selectedMaterial = materialOptions.find(
     (option) => option.id === surface,
@@ -48,54 +50,84 @@ export function Scene3d_3() {
     >
       <div className="section-heading">
         {/* <span className="eyebrow">Shader & surface studies</span> */}
-        <h2 id="material-showcase-title">One sphere. Four surfaces.</h2>
+        <div
+          id="material-showcase-title"
+          className="material-showcase-mode-toggle"
+          role="tablist"
+          aria-label="Choose material showcase mode"
+        >
+          <button
+            type="button"
+            role="tab"
+            aria-selected={viewMode === "shaders"}
+            className="material-showcase-mode-button"
+            onClick={() => setViewMode("shaders")}
+          >
+            Shaders
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={viewMode === "pbr"}
+            className="material-showcase-mode-button"
+            onClick={() => setViewMode("pbr")}
+          >
+            PBR mat
+          </button>
+        </div>
         {/* <p>
           Exploring procedural grain, metallic reflections, and the details that
           bring a surface to life.
         </p> */}
       </div>
 
-      <div
-        className="material-showcase-canvas"
-        role="img"
-        aria-label={`${selectedMaterial.label} shader on an interactive 3D sphere. Drag to orbit; use the buttons below to change material.`}
-      >
-        <DeferredScene>
-          <Scene3d_3Canvas surface={surface} />
-        </DeferredScene>
-      </div>
-
-      <div
-        className="material-showcase-controls"
-        role="group"
-        aria-label="Choose a surface material"
-      >
-        {materialOptions.map((option) => (
-          <button
-            key={option.id}
-            type="button"
-            className="material-showcase-button"
-            aria-pressed={surface === option.id}
-            onClick={() => setSurface(option.id)}
+      {viewMode === "shaders" ? (
+        <>
+          <div
+            className="material-showcase-canvas"
+            role="img"
+            aria-label={`${selectedMaterial.label} shader on an interactive 3D sphere. Drag to orbit; use the buttons below to change material.`}
           >
-            <span
-              className={`material-showcase-swatch material-showcase-swatch--${option.id}`}
-              aria-hidden="true"
-            />
-            {option.label}
-          </button>
-        ))}
-      </div>
-      <p
-        className="material-showcase-description"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        {selectedMaterial.description}
-      </p>
-      <p className="material-showcase-hint">
-        Drag to explore the reflections · Select a surface to compare
-      </p>
+            <DeferredScene>
+              <Scene3d_3Canvas surface={surface} />
+            </DeferredScene>
+          </div>
+
+          <div
+            className="material-showcase-controls"
+            role="group"
+            aria-label="Choose a surface material"
+          >
+            {materialOptions.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                className="material-showcase-button"
+                aria-pressed={surface === option.id}
+                onClick={() => setSurface(option.id)}
+              >
+                <span
+                  className={`material-showcase-swatch material-showcase-swatch--${option.id}`}
+                  aria-hidden="true"
+                />
+                {option.label}
+              </button>
+            ))}
+          </div>
+          <p
+            className="material-showcase-description"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {selectedMaterial.description}
+          </p>
+          <p className="material-showcase-hint">
+            Drag to explore the reflections · Select a surface to compare
+          </p>
+        </>
+      ) : (
+        <PbrMatCarousel />
+      )}
     </section>
   );
 }

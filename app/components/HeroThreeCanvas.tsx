@@ -59,7 +59,7 @@ export default function HeroThreeCanvas() {
             antialias: true,
             alpha: true,
             toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 0.43,
+            toneMappingExposure: 0.63,
           }}
           onCreated={({ camera }) => {
             camera.lookAt(...CAMERA_TARGET);
@@ -71,19 +71,19 @@ export default function HeroThreeCanvas() {
           <ambientLight intensity={100.0} />
           <hemisphereLight
             args={["#b1e1ff", "#3b3024", 0.6]}
-            position={[10, 10, 10]}
-            intensity={30.8}
+            position={[-30, -10, 30]}
+            intensity={500.8}
           />
           {/* <directionalLight position={[50, 200, 180]} intensity={0.2} /> */}
           <directionalLight
-            position={[-10, 20, 10]}
-            intensity={100.6}
-            color="#ffd6a7"
+            position={[-100, -200, 200]}
+            intensity={200.6}
+            color="#e4e4e4"
           />
 
           <Suspense fallback={null}>
-            <Environment files="/moonrise.hdr" background={false} />
-            {/* <Environment files="/material/studio2.hdr" background={false} /> */}
+            {/* <Environment files="/moonrise.hdr" background={false} /> */}
+            <Environment files="/material/studio2.hdr" background={false} />
 
             <group scale={0.2} position={[-55, 65, 0]}>
               <BoardControlModel controlRef={boardControlRef} />
