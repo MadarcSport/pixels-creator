@@ -407,7 +407,8 @@ main {
 }
 
 .ecommerce-banner-image {
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .threejs-banner-image {
@@ -420,11 +421,11 @@ main {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 4.5rem);
-  padding: clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 2rem;
-  background: rgba(255, 255, 255, 0.055);
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .ecommerce-story-video {
@@ -443,11 +444,27 @@ main {
   border: 0;
 }
 
+.ecommerce-story-copy {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ecommerce-story-copy h2 {
+  margin: 0 0 1rem;
+  color: rgba(253, 172, 2, 0.85);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
 .ecommerce-story-copy p {
   margin: 0;
   color: rgba(248, 244, 238, 0.82);
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 @media (max-width: 640px) {
@@ -479,23 +496,8 @@ main {
   margin-top: 4rem;
 }
 
-.ecommerce-process-story .video-banner {
-  width: 100%;
-  margin: 0;
-}
-
-.ecommerce-process-story .video-banner > img {
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-}
-
 .ecommerce-heading {
   margin-top: 6rem;
-}
-
-.ecommerce-heading + .ecommerce-project {
-  margin-top: 0;
 }
 
 .carousel-arrow {
@@ -674,11 +676,6 @@ main {
 
 .quantum-process-story {
   margin-top: 4rem;
-}
-
-.quantum-process-banner {
-  width: 100%;
-  margin: 0;
 }
 
 .project-thumbnail {
@@ -1225,6 +1222,13 @@ main {
     margin-left: 0;
   }
 
+  .ecommerce-visual-preview .ecommerce-banner-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   .identity-heading {
     width: min(100% - 3rem, 32rem);
     margin-top: 130px;
@@ -1429,5 +1433,18 @@ main {
   .journal-section,
   .about-section {
     margin-top: 4rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .ecommerce-visual-preview {
+    min-height: 500px;
+  }
+
+  .ecommerce-visual-preview .ecommerce-banner-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 }

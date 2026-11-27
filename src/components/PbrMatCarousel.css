@@ -9,9 +9,9 @@
 }
 
 .pbr-carousel {
-  width: min(100%, 900px);
-  margin: 2rem auto 0;
-  padding: 1.2rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   /* border-radius: 0; */
   /* border: 1px solid var(--pbr-panel-border); */
   background: transparent;
@@ -22,10 +22,10 @@
 .pbr-carousel-stage {
   position: relative;
   overflow: hidden;
+  height: clamp(300px, 48vw, 480px);
   /* border-radius: 0; */
   /* border: 1px solid rgba(255, 255, 255, 0.08); */
   background: transparent;
-  aspect-ratio: 16 / 9;
 }
 
 .pbr-carousel-stage:focus-visible {
@@ -37,7 +37,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(70%, 760px);
+  width: auto;
+  height: 72%;
+  max-width: min(78%, 760px);
   aspect-ratio: 16 / 9;
   margin: 0;
   padding: 0;
@@ -118,7 +120,7 @@
 }
 
 .pbr-carousel-meta {
-  margin-top: 1.25rem;
+  margin-top: 0.4rem;
   text-align: center;
 }
 
@@ -132,12 +134,13 @@
 
 @media (max-width: 720px) {
   .pbr-carousel {
-    padding: 0.85rem;
+    padding: 0;
     border-radius: 0;
   }
 
   .pbr-carousel-slide {
-    width: min(82%, 520px);
+    height: 68%;
+    max-width: min(84%, 520px);
   }
 
   .pbr-carousel-arrow {

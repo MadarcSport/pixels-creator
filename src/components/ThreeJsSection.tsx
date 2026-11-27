@@ -62,7 +62,8 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
           {preview ? (
             <img
               className="featured-project-video threejs-banner-image"
-              src="https://res.cloudinary.com/db7i9febj/image/upload/v1795431656/001threejswebPartTINYPNG_armwti.png"
+              // src="https://res.cloudinary.com/db7i9febj/image/upload/v1795431656/001threejswebPartTINYPNG_armwti.png"
+              src="https://res.cloudinary.com/db7i9febj/image/upload/v1795816904/WebGL_Showcase_tiny_smqkya.png"
               alt="Three.js interactive web experiments showcase"
               loading="lazy"
             />

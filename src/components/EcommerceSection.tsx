@@ -37,6 +37,30 @@ export function EcommerceSection({ preview = false }: EcommerceSectionProps) {
     );
   };
 
+  const renderEcommerceProcessBanner = () => (
+    <div className="video-banner ecommerce-process-banner">
+      <img
+        src={ecommerceProcessVideo.bannerUrl}
+        alt="Ecommerce process filmstrip preview"
+        loading="lazy"
+      />
+      <button
+        className="video-banner-play"
+        type="button"
+        aria-label={`Watch ${ecommerceProcessVideo.title}`}
+        aria-haspopup="dialog"
+        onClick={() => {
+          ecommerceVideoDialogRef.current?.showModal();
+          setIsEcommerceVideoOpen(true);
+        }}
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </button>
+    </div>
+  );
+
   return (
     <>
       <div className="section-heading featured-labs-heading" id="ecommerce">
@@ -54,12 +78,17 @@ export function EcommerceSection({ preview = false }: EcommerceSectionProps) {
         aria-labelledby="ecommerce-title"
         aria-roledescription={preview ? undefined : "carousel"}
       >
-        <div className="featured-project-visual ecommerce-visual">
+        <div
+          className={`featured-project-visual ecommerce-visual${
+            preview ? " ecommerce-visual-preview" : ""
+          }`}
+        >
           {preview ? (
             <img
               className="featured-project-video ecommerce-banner-image"
               src="https://res.cloudinary.com/db7i9febj/image/upload/v1795426477/BannerEcommerce001_1_eoxita.png"
               alt="Ecommerce product design and development showcase"
+              loading="lazy"
             />
           ) : (
             <>
@@ -141,71 +170,45 @@ export function EcommerceSection({ preview = false }: EcommerceSectionProps) {
           </div>
         </div>
       </section>
+      {!preview && renderEcommerceProcessBanner()}
       {!preview && (
-        <section
-          className="ecommerce-process-story section-block"
-          aria-label="Ecommerce process video"
+        <dialog
+          className="video-dialog"
+          ref={ecommerceVideoDialogRef}
+          aria-labelledby="ecommerce-process-dialog-title"
+          onClose={() => setIsEcommerceVideoOpen(false)}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              ecommerceVideoDialogRef.current?.close();
+            }
+          }}
         >
-          <div className="video-banner ecommerce-process-banner">
-            <img
-              src={ecommerceProcessVideo.bannerUrl}
-              alt="Ecommerce process filmstrip preview"
-              loading="lazy"
-            />
-            <button
-              className="video-banner-play"
-              type="button"
-              aria-label={`Watch ${ecommerceProcessVideo.title}`}
-              aria-haspopup="dialog"
-              onClick={() => {
-                ecommerceVideoDialogRef.current?.showModal();
-                setIsEcommerceVideoOpen(true);
-              }}
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
-          </div>
-
-          <dialog
-            className="video-dialog"
-            ref={ecommerceVideoDialogRef}
-            aria-labelledby="ecommerce-process-dialog-title"
-            onClose={() => setIsEcommerceVideoOpen(false)}
-            onClick={(event) => {
-              if (event.target === event.currentTarget) {
-                ecommerceVideoDialogRef.current?.close();
-              }
-            }}
-          >
-            <div className="video-dialog-content">
-              <div className="video-dialog-heading">
-                <h2 id="ecommerce-process-dialog-title">
-                  {ecommerceProcessVideo.title}
-                </h2>
-                <button
-                  className="video-dialog-close"
-                  type="button"
-                  aria-label="Close video"
-                  onClick={() => ecommerceVideoDialogRef.current?.close()}
-                >
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              {isEcommerceVideoOpen && (
-                <div className="video-frame">
-                  <iframe
-                    src={`https://www.youtube-nocookie.com/embed/${ecommerceProcessVideo.youtubeId}?autoplay=1`}
-                    title={ecommerceProcessVideo.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                </div>
-              )}
+          <div className="video-dialog-content">
+            <div className="video-dialog-heading">
+              <h2 id="ecommerce-process-dialog-title">
+                {ecommerceProcessVideo.title}
+              </h2>
+              <button
+                className="video-dialog-close"
+                type="button"
+                aria-label="Close video"
+                onClick={() => ecommerceVideoDialogRef.current?.close()}
+              >
+                <span aria-hidden="true">×</span>
+              </button>
             </div>
-          </dialog>
-        </section>
+            {isEcommerceVideoOpen && (
+              <div className="video-frame">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${ecommerceProcessVideo.youtubeId}?autoplay=1`}
+                  title={ecommerceProcessVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            )}
+          </div>
+        </dialog>
       )}
     </>
   );

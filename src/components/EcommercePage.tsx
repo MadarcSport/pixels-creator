@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+import { BrandIdentitySection2 } from "./BrandIdentitySection2";
 import { EcommerceSection } from "./EcommerceSection";
+import { ProjectSummary } from "./ProjectSummary";
 
 export function EcommercePage() {
   useEffect(() => {
@@ -42,17 +44,19 @@ export function EcommercePage() {
             />
           </div>
           <div className="ecommerce-story-copy">
-            <p>
+            <h2>Product development journey</h2>
+            <ProjectSummary collapsible>
               Since moving to China in 2015, I have focused on designing and
               developing standout products for e-commerce. Beyond the physical
               items, I work closely with companies to shape their branding and
               set new market trends. Today, I combine this deep manufacturing
               insight with creative direction to help brands scale and connect
               with global audiences.
-            </p>
+            </ProjectSummary>
           </div>
         </section>
         <EcommerceSection />
+        <BrandIdentitySection2 />
       </main>
     </div>
   );

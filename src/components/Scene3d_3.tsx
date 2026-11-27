@@ -81,46 +81,66 @@ export function Scene3d_3() {
         </p> */}
       </div>
 
-      {viewMode === "shaders" ? (
-        <>
-          <div
-            className="material-showcase-canvas"
-            role="img"
-            aria-label={`${selectedMaterial.label} shader on an interactive 3D sphere. Drag to orbit; use the buttons below to change material.`}
-          >
-            <DeferredScene>
-              <Scene3d_3Canvas surface={surface} />
-            </DeferredScene>
-          </div>
+      <div
+        className={`material-showcase-panel material-showcase-panel--${viewMode}`}
+      >
+        <div
+          className={`material-showcase-view ${
+            viewMode === "shaders"
+              ? "material-showcase-view--active"
+              : "material-showcase-view--inactive"
+          }`}
+          aria-hidden={viewMode !== "shaders"}
+        >
+          <>
+            <div
+              className="material-showcase-canvas"
+              role="img"
+              aria-label={`${selectedMaterial.label} shader on an interactive 3D sphere. Drag to orbit; use the buttons below to change material.`}
+            >
+              <DeferredScene>
+                <Scene3d_3Canvas surface={surface} />
+              </DeferredScene>
+            </div>
 
-          <div
-            className="material-showcase-controls"
-            role="group"
-            aria-label="Choose a surface material"
-          >
-            {materialOptions.map((option) => (
-              <button
-                key={option.id}
-                type="button"
-                className="material-showcase-button"
-                aria-pressed={surface === option.id}
-                onClick={() => setSurface(option.id)}
-              >
-                <span
-                  className={`material-showcase-swatch material-showcase-swatch--${option.id}`}
-                  aria-hidden="true"
-                />
-                {option.label}
-              </button>
-            ))}
-          </div>
-          <p className="material-showcase-hint">
-            Drag to explore the reflections · Select a surface to compare
-          </p>
-        </>
-      ) : (
-        <PbrMatCarousel />
-      )}
+            <div
+              className="material-showcase-controls"
+              role="group"
+              aria-label="Choose a surface material"
+            >
+              {materialOptions.map((option) => (
+                <button
+                  key={option.id}
+                  type="button"
+                  className="material-showcase-button"
+                  aria-pressed={surface === option.id}
+                  onClick={() => setSurface(option.id)}
+                >
+                  <span
+                    className={`material-showcase-swatch material-showcase-swatch--${option.id}`}
+                    aria-hidden="true"
+                  />
+                  {option.label}
+                </button>
+              ))}
+            </div>
+            <p className="material-showcase-hint">
+              Drag to explore the reflections · Select a surface to compare
+            </p>
+          </>
+        </div>
+
+        <div
+          className={`material-showcase-view ${
+            viewMode === "pbr"
+              ? "material-showcase-view--active"
+              : "material-showcase-view--inactive"
+          }`}
+          aria-hidden={viewMode !== "pbr"}
+        >
+          <PbrMatCarousel />
+        </div>
+      </div>
     </section>
   );
 }
