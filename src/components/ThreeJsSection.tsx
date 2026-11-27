@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { featuredProjects } from "../data/featuredProjects";
 import { ProjectSummary } from "./ProjectSummary";
@@ -10,7 +10,25 @@ interface ThreeJsSectionProps {
 
 export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [isQuantumVideoOpen, setIsQuantumVideoOpen] = useState(false);
+  const quantumVideoDialogRef = useRef<HTMLDialogElement>(null);
   const activeProject = featuredProjects[activeProjectIndex];
+  const quantumPulseVideo = {
+    title: "Quantum Pulse process video",
+    youtubeId: "PgBqj90q0TA",
+    bannerUrl:
+      "https://res.cloudinary.com/db7i9febj/image/upload/v1795734904/THREEJSpeliculeTINY_yeklkx.png",
+  };
+
+  useEffect(() => {
+    if (!isQuantumVideoOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isQuantumVideoOpen]);
 
   const showProject = (direction: -1 | 1) => {
     setActiveProjectIndex(
@@ -161,12 +179,6 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
               </a>
             )}
           </div>
-          {!preview && (
-            <p className="project-note">
-              Use the arrows to browse featured projects. Open the live project
-              in a new tab for the full experience.
-            </p>
-          )}
         </div>
       </section>
       {!preview && (
@@ -185,6 +197,72 @@ export function ThreeJsSection({ preview = false }: ThreeJsSectionProps) {
             </button>
           ))}
         </div>
+      )}
+      {!preview && (
+        <section
+          className="quantum-process-story section-block"
+          aria-label="Quantum Pulse process video"
+        >
+          <div className="video-banner quantum-process-banner">
+            <img
+              src={quantumPulseVideo.bannerUrl}
+              alt="Quantum Pulse filmstrip preview"
+              loading="lazy"
+            />
+            <button
+              className="video-banner-play"
+              type="button"
+              aria-label={`Watch ${quantumPulseVideo.title}`}
+              aria-haspopup="dialog"
+              onClick={() => {
+                quantumVideoDialogRef.current?.showModal();
+                setIsQuantumVideoOpen(true);
+              }}
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </button>
+          </div>
+
+          <dialog
+            className="video-dialog"
+            ref={quantumVideoDialogRef}
+            aria-labelledby="quantum-process-dialog-title"
+            onClose={() => setIsQuantumVideoOpen(false)}
+            onClick={(event) => {
+              if (event.target === event.currentTarget) {
+                quantumVideoDialogRef.current?.close();
+              }
+            }}
+          >
+            <div className="video-dialog-content">
+              <div className="video-dialog-heading">
+                <h2 id="quantum-process-dialog-title">
+                  {quantumPulseVideo.title}
+                </h2>
+                <button
+                  className="video-dialog-close"
+                  type="button"
+                  aria-label="Close video"
+                  onClick={() => quantumVideoDialogRef.current?.close()}
+                >
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              {isQuantumVideoOpen && (
+                <div className="video-frame">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${quantumPulseVideo.youtubeId}?autoplay=1`}
+                    title={quantumPulseVideo.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              )}
+            </div>
+          </dialog>
+        </section>
       )}
       {!preview && <ArtDesignSection />}
     </>

@@ -2,7 +2,7 @@ export interface ArtCreation {
   id: string;
   title: string;
   category: string;
-  subtitle: string;
+  subtitle?: string;
   description: string;
   imageUrl: string;
   imageAlt: string;
@@ -16,7 +16,6 @@ export const artCreations: ArtCreation[] = [
     id: "roundy-fridge",
     title: "Roundy",
     category: "Refrigerator concept",
-    subtitle: "A softer take on the everyday fridge.",
     description:
       "An original refrigerator concept for the home, shaped around rounded forms rather than sharp corners. Roundy reimagines a familiar appliance as a playful design object, giving an everyday essential a distinctive personality.",
     imageUrl:

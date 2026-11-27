@@ -65,7 +65,9 @@ export function ArtDesignSection() {
                 </span>
               </div>
               <h3 id={`${creation.id}-title`}>{creation.title}</h3>
-              <p className="art-design-subtitle">{creation.subtitle}</p>
+              {creation.subtitle && (
+                <p className="art-design-subtitle">{creation.subtitle}</p>
+              )}
               <ProjectSummary collapsible>
                 {creation.description}
               </ProjectSummary>

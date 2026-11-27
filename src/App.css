@@ -475,6 +475,21 @@ main {
   text-align: center;
 }
 
+.ecommerce-process-story {
+  margin-top: 4rem;
+}
+
+.ecommerce-process-story .video-banner {
+  width: 100%;
+  margin: 0;
+}
+
+.ecommerce-process-story .video-banner > img {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+}
+
 .ecommerce-heading {
   margin-top: 6rem;
 }
@@ -655,6 +670,15 @@ main {
   justify-content: center;
   gap: 0.8rem;
   margin-top: 1rem;
+}
+
+.quantum-process-story {
+  margin-top: 4rem;
+}
+
+.quantum-process-banner {
+  width: 100%;
+  margin: 0;
 }
 
 .project-thumbnail {
@@ -1151,6 +1175,7 @@ main {
 @media (max-width: 980px) {
   .hero-section,
   .featured-project,
+  .quantum-process-story,
   .section-heading,
   .journal-section,
   .about-section {
@@ -1193,6 +1218,11 @@ main {
     width: 150%;
     max-width: none;
     margin-left: -25%;
+  }
+
+  .ecommerce-process-story .video-banner > img {
+    width: 100%;
+    margin-left: 0;
   }
 
   .identity-heading {
@@ -1358,6 +1388,10 @@ main {
   }
 
   .featured-project {
+    border-radius: 1.35rem;
+  }
+
+  .quantum-process-story {
     border-radius: 1.35rem;
   }
 

@@ -92,7 +92,8 @@ export default function HeroThreeCanvas() {
           gl={{
             antialias: true,
             alpha: true,
-            toneMapping: THREE.ACESFilmicToneMapping,
+            // toneMapping: THREE.ACESFilmicToneMapping,
+            toneMapping: THREE.ReinhardToneMapping,
             toneMappingExposure: 0.83,
           }}
           onCreated={({ camera }) => {

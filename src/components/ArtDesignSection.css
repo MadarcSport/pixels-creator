@@ -107,10 +107,10 @@
 
 .art-design-copy h3 {
   margin: 1.5rem 0 0.75rem;
-  font-size: clamp(2.75rem, 6vw, 4.75rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.065em;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.07em;
 }
 
 .art-design-subtitle {

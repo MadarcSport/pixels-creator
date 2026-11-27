@@ -18,7 +18,7 @@ export const featuredProjects: FeaturedProject[] = [
     tags: ["Interactive 3D", "Web experience", "Live demo"],
     url: "https://quantum-pulse-tau.vercel.app/",
     thumbnailUrl:
-      "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=640&q=80",
+      "https://res.cloudinary.com/db7i9febj/image/upload/v1795735957/quanrtum_thumb1_1_k1ulwq.png",
     previewType: "video",
     previewUrl:
       "https://res.cloudinary.com/db7i9febj/video/upload/v1794300774/quantumPukse_zfvkqc.webm",
@@ -32,7 +32,7 @@ export const featuredProjects: FeaturedProject[] = [
     tags: ["Web experience", "Interactive", "Live demo"],
     url: "https://street-wall-1.vercel.app/",
     thumbnailUrl:
-      "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=640&q=80",
+      "https://res.cloudinary.com/db7i9febj/image/upload/v1795735957/street_wall_thumb1_1_iwjccq.png",
     previewType: "video",
     previewUrl:
       "https://res.cloudinary.com/db7i9febj/video/upload/v1794948903/wallDownn11_o0tluq.webm",
@@ -45,7 +45,7 @@ export const featuredProjects: FeaturedProject[] = [
     tags: ["Material maps", "Shader art", "Interactive 3D"],
     url: "https://broken-computer.vercel.app/",
     thumbnailUrl:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=640&q=80",
+      "https://res.cloudinary.com/db7i9febj/image/upload/v1795735956/broken_cube_thumb1_1_elsnfd.png",
     previewType: "video",
     previewUrl:
       "https://res.cloudinary.com/db7i9febj/video/upload/v1794905595/cubeDemo01_1_1_x1od7w.webm",
